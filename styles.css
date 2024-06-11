@@ -3,10 +3,28 @@ body {
     color:#ede6e3;
 }
 
+.border-light {
+    border-color: #EED8CF !important;
+}
+
+.card {
+    background-color: #EED8CF;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #3e78b2 !important;
+    border-color: #3e78b2 !important;
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+    background-color: #9E7682 !important;
+    border-color: #9E7682 !important;
+}
+
 h1, h2, h3, h4, h5 {}
 
 .table, table {
-    background-color:#ede6e3;
+    background-color:#EED8CF;
     border: #1e212b;
     border-radius: 5px;
     color: #1e212b;
