@@ -1,14 +1,10 @@
 body {
     background-color:#1e212b; 
-    color:#ede6e3;
+    color:#DADAD9;
 }
 
 .border-light {
     border-color: #EED8CF !important;
-}
-
-.card {
-    background-color: #EED8CF;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
@@ -19,6 +15,16 @@ body {
 .btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
     background-color: #9E7682 !important;
     border-color: #9E7682 !important;
+}
+
+.card {
+    background-color: #EED8CF;
+    color: #1e212b; 
+}
+
+.footer {
+    background-color: #232733;
+    color:  #DADAD9;
 }
 
 h1, h2, h3, h4, h5 {}
