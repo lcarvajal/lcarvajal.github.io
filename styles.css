@@ -1,0 +1,13 @@
+body {
+    background-color:#1e212b; 
+    color:#ede6e3;
+}
+
+h1, h2, h3, h4, h5 {}
+
+.table, table {
+    background-color:#ede6e3;
+    border: #1e212b;
+    border-radius: 5px;
+    color: #1e212b;
+}
