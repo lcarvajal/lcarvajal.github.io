@@ -35,6 +35,11 @@ body {
 }
 
 .project-card {
+    background-color: #DADAD9;
+    color: #1e212b;
+}
+
+.startup-card {
     background-color: #EED8CF;
     color: #1e212b;
 }
