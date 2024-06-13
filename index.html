@@ -349,12 +349,14 @@
   <script>
     var currentAudio;
     var currentAudioName;
+
     var summerTimeAudio = document.getElementById("summertimeAudio");
     var takeFiveAudio = document.getElementById("takeFiveAudio");
 
     function playAudio(audioName) {
       if (currentAudio) {
         currentAudio.pause();
+        currentAudio = null;
       }
 
       if (currentAudioName != audioName) {
@@ -367,6 +369,9 @@
 
         currentAudio.play();
         currentAudioName = audioName;
+      }
+      else {
+        currentAudioName = null;
       }
     }
 
