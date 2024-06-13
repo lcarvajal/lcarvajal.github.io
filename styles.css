@@ -18,7 +18,21 @@ body {
     color: black;
 }
 
-.card {
+.card-header {
+    background-color: #DADAD9;
+    color:#1e212b;
+}
+
+.list-group-item {
+    background-color: #232733;
+    color:#DADAD9;
+}
+
+.playlist-card {
+    background-color: #232733;
+}
+
+.project-card {
     background-color: #EED8CF;
     color: #1e212b;
 }
