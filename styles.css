@@ -13,25 +13,44 @@ body {
 }
 
 .btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
-    background-color: #9E7682 !important;
-    border-color: #9E7682 !important;
+    background-color: #DADAD9 !important;
+    border-color: #DADAD9 !important;
+    color: black;
 }
 
 .card {
     background-color: #EED8CF;
-    color: #1e212b; 
+    color: #1e212b;
+}
+
+.header {
+    background-color: #232733;
+    border-bottom: solid 2px black;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    margin-bottom: 8rem;
 }
 
 .footer {
     background-color: #232733;
+    border-top: solid 2px black;
     color:  #DADAD9;
+    margin-top: 8rem !important;
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
 }
-
-h1, h2, h3, h4, h5 {}
 
 .table, table {
     background-color:#EED8CF;
     border: #1e212b;
     border-radius: 5px;
     color: #1e212b;
+}
+
+.rotate-slightly-left {
+    transform: rotate(355deg);
+}
+
+.rotate-slightly-right {
+    transform: rotate(5deg);
 }
