@@ -30,6 +30,8 @@ body {
 
 .playlist-card {
     background-color: #232733;
+    border-color: #232733;
+    max-width: 500px;
 }
 
 .project-card {
