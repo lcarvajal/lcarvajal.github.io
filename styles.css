@@ -23,6 +23,10 @@ body {
     color:#1e212b;
 }
 
+.highlight {
+    color: #5bc3eb;
+}
+
 .list-group-item {
     background-color: #232733;
     color:#DADAD9;
@@ -38,9 +42,16 @@ body {
     background-color: #DADAD9;
     color: #1e212b;
     float: none;
-    margin: 0 auto; /* Added */
+    margin: 0 auto;
     max-width: 300px;
     text-align: left;
+}
+
+.reference-card {
+    background-color: #232733;
+    border-color: black;
+    float: none;
+    margin: 0 auto;
 }
 
 .startup-card {
