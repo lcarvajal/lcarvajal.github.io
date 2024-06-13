@@ -37,6 +37,10 @@ body {
 .project-card {
     background-color: #DADAD9;
     color: #1e212b;
+    float: none;
+    margin: 0 auto; /* Added */
+    max-width: 300px;
+    text-align: left;
 }
 
 .startup-card {
