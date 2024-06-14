@@ -190,8 +190,8 @@
     <div class="row pt-5 mt-5">
       <div class="col-2 d-none d-lg-block"></div>
       <div class="col text-center">
-        <h1 class="display-4">In my free time, I play the piano</h1>
-        <p>Enjoy these songs I recorded for you</p>
+        <h1 class="display-4">I also play the piano</h1>
+        <p>Enjoy these songs, recorded just for you</p>
       </div>
       <div class="col-2 d-none d-lg-block"></div>
     </div>
@@ -216,13 +216,19 @@
                 <h6>Take 5</h6>
                 <p>Paul Desmond, Lukas Carvajal</p>
               </div>
-              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:inline-end;"
-                onclick="playAudio('takeFive')">
+              <button id="takeFivePlay" type="button" class="btn btn-lg btn-primary" style="float:right;"
+                onclick="play(takeFiveAudio)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play"
                   viewBox="0 0 16 16">
                   <path
                     d="M10.804 8 5 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696z">
                   </path>
+                </svg>
+              </button>
+              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:none;"
+                onclick="pause()" id="takeFivePause">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
+                  <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5"/>
                 </svg>
               </button>
             </li>
@@ -232,13 +238,19 @@
                 <h6>Summertime</h6>
                 <p>George Gershwin, Lukas Carvajal</p>
               </div>
-              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:inline-end;"
-                onclick="playAudio('summertime')">
+              <button type="button" class="btn btn-lg btn-primary" style="float:right;"
+                onclick="play(summertimeAudio)" id="summertimePlay">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play"
                   viewBox="0 0 16 16">
                   <path
                     d="M10.804 8 5 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696z">
                   </path>
+                </svg>
+              </button>
+              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:none;"
+                onclick="pause()" id="summertimePause">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
+                  <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5"/>
                 </svg>
               </button>
             </li>
@@ -282,11 +294,10 @@
     <div class="modal-dialog modal-lg"> <!-- modal-lg class for large modal -->
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Achievement</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Mimo</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h3>About Mimo</h3>
           <p><a href="https://getmimo.com" target="_blank">Mimo</a> is a startup developing an app for learning to code
             available on Android and iOS. 100,000+ subscribers pay for the learning experience, enabling 25,000,000 of
             other to learn for free.</p>
@@ -346,11 +357,10 @@
     <div class="modal-dialog modal-lg"> <!-- modal-lg class for large modal -->
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Achievement</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tip Yourself</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <h3>About Tip Yourself</h3>
           <p>
             <a href="https://help.earnin.com/hc/en-us/articles/360041192274-How-does-Tip-Yourself-work"
               target="_blank">Tip Yourself</a> is a savings app where users share the reasons why they're saving with a
@@ -371,6 +381,8 @@
                 alt="A screenshot of tip statistics. A calendar shows the days you tipped and different stats show total amount, average tipped, etc. for a month.">
             </div>
           </div>
+          <em>Screenshots of the Tip Yourself app</em>
+          <br>
           <br>
           <h3>My time at Tip Yourself</h3>
           <p>During college I created an app development business called Apps by Lukas, where I built apps for people
@@ -401,37 +413,47 @@
   </div>
 
   <script>
-    var currentAudio;
-    var currentAudioName;
+    function Audio(name) {
+      this.name = name;
+      this.audio = document.getElementById(name + "Audio");
+      this.playButton = document.getElementById(name + "Play");
+      this.pauseButton = document.getElementById(name + "Pause");
 
-    var summerTimeAudio = document.getElementById("summertimeAudio");
-    var takeFiveAudio = document.getElementById("takeFiveAudio");
+      this.play = function() {
+        this.playButton.style.display = "none"
+        this.pauseButton.style.display = "block"
+        this.audio.play();
+      };
 
-    function playAudio(audioName) {
+      this.pause = function() {
+        this.playButton.style.display = "block"
+        this.pauseButton.style.display = "none"
+        this.audio.pause();
+      };
+    }
+
+    const summertimeAudio = new Audio("summertime");
+    const takeFiveAudio = new Audio("takeFive");
+    let currentAudio;
+
+    function play(audio) {
       if (currentAudio) {
         currentAudio.pause();
-        currentAudio = null;
       }
 
-      if (currentAudioName != audioName) {
-        if (audioName == "summertime") {
-          currentAudio = summerTimeAudio;
-        }
-        else {
-          currentAudio = takeFiveAudio;
-        }
-
+      if (currentAudio != audio) {
+        currentAudio = audio;
         currentAudio.play();
-        currentAudioName = audioName;
       }
       else {
-        currentAudioName = null;
+        currentAudio = null;
       }
     }
 
     function pause() {
       if (currentAudio) {
         currentAudio.pause();
+        currentAudio = null;
       }
     }
   </script>
