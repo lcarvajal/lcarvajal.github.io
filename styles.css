@@ -32,6 +32,11 @@ body {
     color:#DADAD9;
 }
 
+.modal-content {
+    background-color: #232733;
+    color: #DADAD9;
+}
+
 .playlist-card {
     background-color: #232733;
     border-color: #232733;
