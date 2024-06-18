@@ -95,7 +95,10 @@
             </div>
             <div class="col-9">
               <div class="card-body">
-                <p class="card-text lead"><span class="highlight">Working with Lukas over the last 3+ years was amazing.</span><br>For a lot of this time, he was the product manager for two full teams, which would’ve been tough to handle for almost anyone, but Lukas embraced this challenge with open arms and did a great job pushing the company forward.</p>
+                <p class="card-text lead"><span class="highlight">Working with Lukas over the last 3+ years was
+                    amazing.</span><br>For a lot of this time, he was the product manager for two full teams, which
+                  would’ve been tough to handle for almost anyone, but Lukas embraced this challenge with open arms and
+                  did a great job pushing the company forward.</p>
                 <!-- <a href="https://www.linkedin.com/in/lukascarvajal" target="_blank">¹</a> -->
                 <h5 class="card-title">Lorenz Schimik</h5>
                 <p class="card-text">Co-founder at Mimo</p>
@@ -152,7 +155,7 @@
               <img src="img/open-data-austria.png" class="card-img-top img-fluid" alt="Card Image 1">
               <div class="card-body">
                 <h5 class="card-title">Public data web app</h5>
-                <p class="card-text">Python, Django</p>
+                <p class="card-text">Python, React, Django</p>
                 <a href="https://github.com/lcarvajal/real-open-data" class="btn btn-primary" target="_blank">
                   Open on Github
                 </a>
@@ -175,7 +178,11 @@
             </div>
             <div class="col-9">
               <div class="card-body">
-                <p class="card-text lead"><span class="highlight">Lukas is an incredibly talented engineer.</span><br>Tip Yourself is where it is today because of his extraordinary contributions. As an engineer, he has an amazing balance between immediate priority and long term architecture vision. Lukas is by far one of the most talented individuals I've had the pleasure of working with in my professional career.</p>
+                <p class="card-text lead"><span class="highlight">Lukas is an incredibly talented
+                    engineer.</span><br>Tip Yourself is where it is today because of his extraordinary contributions. As
+                  an engineer, he has an amazing balance between immediate priority and long term architecture vision.
+                  Lukas is by far one of the most talented individuals I've had the pleasure of working with in my
+                  professional career.</p>
                 <h5 class="card-title">Mike Lenz</h5>
                 <p class="card-text">Tip yourself Co-founder<br>Now VP of Product at Brigit</p>
               </div>
@@ -225,10 +232,12 @@
                   </path>
                 </svg>
               </button>
-              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:none;"
-                onclick="pause()" id="takeFivePause">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
-                  <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5"/>
+              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:none;" onclick="pause()"
+                id="takeFivePause">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5" />
                 </svg>
               </button>
             </li>
@@ -238,8 +247,8 @@
                 <h6>Summertime</h6>
                 <p>George Gershwin, Lukas Carvajal</p>
               </div>
-              <button type="button" class="btn btn-lg btn-primary" style="float:right;"
-                onclick="play(summertimeAudio)" id="summertimePlay">
+              <button type="button" class="btn btn-lg btn-primary" style="float:right;" onclick="play(summertimeAudio)"
+                id="summertimePlay">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play"
                   viewBox="0 0 16 16">
                   <path
@@ -247,10 +256,12 @@
                   </path>
                 </svg>
               </button>
-              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:none;"
-                onclick="pause()" id="summertimePause">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause" viewBox="0 0 16 16">
-                  <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5"/>
+              <button type="button" class="btn btn-lg btn-primary" style="float:right; display:none;" onclick="pause()"
+                id="summertimePause">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5" />
                 </svg>
               </button>
             </li>
@@ -419,13 +430,13 @@
       this.playButton = document.getElementById(name + "Play");
       this.pauseButton = document.getElementById(name + "Pause");
 
-      this.play = function() {
+      this.play = function () {
         this.playButton.style.display = "none"
         this.pauseButton.style.display = "block"
         this.audio.play();
       };
 
-      this.pause = function() {
+      this.pause = function () {
         this.playButton.style.display = "block"
         this.pauseButton.style.display = "none"
         this.audio.pause();
