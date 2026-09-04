@@ -1,16 +1,101 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Project from "../components/Project.astro";
+import StickySection from "../components/StickySection.astro";
+
+const projects = [
+  {
+    name: "Friends in Flats",
+    logo: "/resources/images/friends-in-flats-logo-blue.svg",
+    title: "An online marketplace that triples landlord income while offering more affordable housing to students",
+    summary: "As CTO, I developed rental management software, enabling landlords to bypass a €4 per m² rent cap and opening up cheaper housing options for students.",
+    highlights: [
+      { label: "Key metric", value: "€50,000 MRR for landlords" },
+      { label: "Position", value: "Chief Technology Officer" },
+      { label: "Company size", value: "2–3 people" },
+      { label: "Product page", value: "friends-in-flats.com", href: "https://friends-in-flats.com" },
+      { label: "Status", value: "Live" },
+    ],
+    projectLinks: [
+      { label: "Organic tenant growth", href: "#" },
+      { label: "Booking and payments system", href: "#" },
+      { label: "Listing algorithms", href: "#" },
+    ],
+  },
+  {
+    name: "Mimo",
+    logo: "/resources/images/mimo-logo-purple.webp",
+    title: "A mobile app teaching over 25,000,000 people to learn to code",
+    summary: "As first product manager, I led development efforts toward one aim: making coding accessible to everyone.",
+    highlights: [
+      { label: "Key metric", value: "€800,000 MRR" },
+      { label: "Position", value: "Product Manager" },
+      { label: "Company size", value: "14–30 people" },
+      { label: "Product page", value: "mimo.org", href: "https://mimo.org" },
+      { label: "Status", value: "Live" },
+    ],
+    projectLinks: [
+      { label: "Scaling content generation", href: "#" },
+      { label: "Concept chunking with gamification", href: "#" },
+      { label: "The Learn to Code Track", href: "#" },
+    ],
+  },
+  {
+    name: "Tip Yourself",
+    logo: "/resources/images/tip-yourself-logo-green.png",
+    title: "A mobile app helping young Americans save over $1,000,000",
+    summary: "Imagine saving money felt like winning. Tip Yourself changed people’s money mindset. As CTO, I launched the iOS app.",
+    highlights: [
+      { label: "Key metric", value: "29,000,000 downloads on Earnin" },
+      { label: "Position", value: "Chief Technology Officer" },
+      { label: "Company size", value: "2–3 people" },
+      { label: "Product page", value: "Tip Yourself on earnin.com", href: "https://www.earnin.com/products/savings-jars" },
+      { label: "Status", value: "Acquired" },
+    ],
+    projectLinks: [
+      { label: "Organic tenant growth", href: "#" },
+      { label: "Booking system with payments", href: "#" },
+      { label: "Listing algorithm and pricing engine", href: "#" },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Lukas Carvajal">
   <div class="hero-placeholder full-bleed" aria-hidden="true"></div>
-  <h1>Lukas Carvajal</h1>
-  <p>Personal website.</p>
+  <section class="intro">
+    <h1>Welcome</h1>
+    <p>Hope you enjoy seeing what I'm up to</p>
+    <hr />
+  </section>
+
+  <StickySection title="Startup portfolio" description="Products I helped build and grow.">
+    {projects.map((project) => (
+      <Project
+        title={project.title}
+        summary={project.summary}
+        highlights={project.highlights}
+        projectLinks={project.projectLinks}
+      >
+        <img slot="logo" src={project.logo} alt={`${project.name} logo`} />
+      </Project>
+    ))}
+  </StickySection>
 </BaseLayout>
 
 <style>
   .hero-placeholder {
     height: min(60vh, 40rem);
     background: var(--color-text);
+  }
+
+  .intro {
+    padding-top: var(--space-8);
+  }
+
+  .intro hr {
+    margin-block: var(--space-8) 0;
+    border: 0;
+    border-top: 1px solid var(--color-border);
   }
 </style>

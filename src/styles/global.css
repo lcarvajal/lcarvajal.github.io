@@ -17,18 +17,18 @@ body {
 }
 
 main {
-  display: grid;
-  grid-template-columns:
-    minmax(var(--page-padding), 1fr)
-    minmax(0, var(--width-content))
-    minmax(var(--page-padding), 1fr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 main > * {
-  grid-column: 2;
+  width: min(
+    calc(100% - (2 * var(--page-padding))),
+    var(--width-content)
+  );
 }
 
 .full-bleed {
-  grid-column: 1 / -1;
   width: 100%;
 }
