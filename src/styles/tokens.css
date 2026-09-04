@@ -12,11 +12,12 @@
   --color-focus: #005fcc;
 
   /* Font families */
-  --font-body: system-ui, sans-serif;
-  --font-heading: system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --font-heading: "Urbanist", system-ui, sans-serif;
 
   /* Font weights */
   --weight-normal: 400;
+  --weight-heading: 700;
   --weight-bold: 700;
 
   /* Type scale */

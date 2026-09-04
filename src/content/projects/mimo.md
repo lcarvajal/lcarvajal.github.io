@@ -1,7 +1,7 @@
 ---
 name: Mimo
 logo: /resources/images/mimo-logo-purple.webp
-title: A mobile app teaching over 25,000,000 people to learn to code
+title: Teaching 25,000,000 people to learn to code
 summary: As first product manager, I led development efforts toward one aim—making coding accessible to everyone.
 order: 2
 highlights:
