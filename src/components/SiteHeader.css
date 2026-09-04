@@ -1,7 +1,7 @@
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
   background: var(--color-background);
 }
@@ -10,7 +10,7 @@
   position: relative;
   width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
   margin-inline: auto;
-  padding-block: var(--space-12) var(--space-8);
+  padding-block: var(--space-6);
   transition: padding var(--duration-normal) var(--ease-standard);
 }
 

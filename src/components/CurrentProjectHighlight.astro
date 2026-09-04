@@ -1,0 +1,105 @@
+---
+import ExternalLink from "./ExternalLink.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
+  image: string;
+  imageAlt: string;
+  video?: string;
+}
+
+const { title, description, href, linkLabel, image, imageAlt, video } = Astro.props;
+---
+
+<section class="current-project full-bleed">
+  <div class="current-project__inner">
+    <div class="current-project__copy">
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <ExternalLink {href}>{linkLabel}</ExternalLink>
+    </div>
+
+    {video ? (
+      <video autoplay muted loop playsinline poster={image} aria-label={imageAlt} data-playback-rate="1.25">
+        <source src={video} type="video/mp4" />
+      </video>
+    ) : (
+      <img src={image} alt={imageAlt} loading="lazy" />
+    )}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLVideoElement>("[data-playback-rate]").forEach((video) => {
+    video.playbackRate = Number(video.dataset.playbackRate);
+  });
+</script>
+
+<style>
+  .current-project {
+    color: var(--color-background);
+    background: var(--color-highlight);
+  }
+
+  .current-project :global(a) {
+    color: inherit;
+  }
+
+  .current-project__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-12);
+    align-items: center;
+    width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
+    margin-inline: auto;
+    padding-block: var(--space-16);
+  }
+
+  .current-project__copy {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  h2,
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    line-height: var(--leading-heading);
+    white-space: pre-line;
+  }
+
+  p {
+    max-width: var(--width-text);
+    font-size: var(--text-lg);
+  }
+
+  img,
+  video {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--width-media);
+    height: auto;
+    justify-self: end;
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 48rem) {
+    .current-project__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    img,
+    video {
+      justify-self: start;
+    }
+  }
+</style>

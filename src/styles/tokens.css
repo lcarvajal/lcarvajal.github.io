@@ -6,6 +6,7 @@
   --color-text-muted: #666666;
   --color-border: #d9d9d9;
   --color-accent: #0000ee;
+  --color-highlight: var(--color-text);
   --color-focus: #005fcc;
 
   /* Font families */
@@ -42,8 +43,9 @@
   /* Layout */
   --width-content: 70rem;
   --width-text: 70ch;
+  --width-media: 32rem;
   --page-padding: 1rem;
-  --height-header-expanded: 12.65rem;
+  --height-header-expanded: 10.65rem;
   --height-header-compact: 4.5rem;
   --height-header-current: var(--height-header-expanded);
 

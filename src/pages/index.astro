@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CurrentProjectHighlight from "../components/CurrentProjectHighlight.astro";
 import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
 import { getCollection } from "astro:content";
@@ -20,8 +21,8 @@ const projects = (await getCollection("projects"))
       </figcaption>
     </figure>
     <div class="intro">
-      <h1>Let's go</h1>
-      <p>Hope you're excited for what I'm up to</p>
+        <h1>10 / 10</h1>
+      <p>Hope you're fired up for what I do</p>
     </div>
     <hr class="intro-divider" />
   </section>
@@ -39,6 +40,16 @@ const projects = (await getCollection("projects"))
       </Project>
     ))}
   </StickySection>
+
+  <CurrentProjectHighlight
+    title={"Now building:\nFriends in Flats"}
+    description="Generating €50,000 MRR for landlords, the public listing site is free to explore without creating an account."
+    href="https://friends-in-flats.com"
+    linkLabel="Open website"
+    image="/resources/images/friends-in-flats-home-page.png"
+    imageAlt="Screen recording of the Friends in Flats apartment listings homepage"
+    video="/resources/video/friends-in-flats-demo.mp4"
+  />
 </BaseLayout>
 
 <style>
@@ -69,6 +80,19 @@ const projects = (await getCollection("projects"))
     object-fit: cover;
   }
 
+  .hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(
+      circle at center,
+      transparent 50%,
+      color-mix(in srgb, var(--color-text) 65%, transparent) 100%
+    );
+    pointer-events: none;
+    content: "";
+  }
+
   .hero figcaption {
     position: absolute;
     right: var(--space-4);
@@ -77,7 +101,7 @@ const projects = (await getCollection("projects"))
     color: var(--color-background);
     font-size: var(--text-sm);
     text-align: right;
-    z-index: 1;
+    z-index: 2;
   }
 
   .intro {
