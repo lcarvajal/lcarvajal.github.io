@@ -1,0 +1,8 @@
+---
+import Bio, { frontmatter } from "../../content/bio.md";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Bio · Lukas Carvajal" description={frontmatter.description}>
+  <article><Bio /></article>
+</BaseLayout>

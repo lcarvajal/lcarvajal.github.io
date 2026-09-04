@@ -1,5 +1,12 @@
-# My Personal Page
+# lukascarvajal.com
 
-A very simple page using Bootstrap to highlight my two big work achievements as well as the three projects I'm working on right now.
+The personal website of Lukas Carvajal, built with Astro, TypeScript, plain CSS, and selective React components.
 
-See the site at: [lcarvajal.github.io](https://lcarvajal.github.io)
+## Development
+
+```sh
+npm install
+npm run dev
+```
+
+Run `npm run build` to type-check and create the production site in `dist/`.

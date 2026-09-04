@@ -1,0 +1,13 @@
+@import "./tokens.css";
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: var(--leading-body);
+}
+
+:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}

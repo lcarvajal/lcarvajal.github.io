@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const components = [
+  { name: "Component Preview", href: "/components/component-preview" },
+  { name: "Counter", href: "/components/counter" },
+];
+---
+
+<BaseLayout title="Components · Lukas Carvajal" description="A living gallery of components created for this website.">
+  <h1>Components</h1>
+  <ul>
+    {components.map((component) => (
+      <li><a href={component.href}>{component.name}</a></li>
+    ))}
+  </ul>
+</BaseLayout>
