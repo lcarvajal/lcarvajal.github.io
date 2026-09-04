@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Acknowledgements from "../components/Acknowledgements.astro";
 import CurrentProjectHighlight from "../components/CurrentProjectHighlight.astro";
 import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
@@ -7,6 +8,38 @@ import { getCollection } from "astro:content";
 
 const projects = (await getCollection("projects"))
   .sort((a, b) => a.data.order - b.data.order);
+
+const acknowledgementGroups = [
+  {
+    title: "Shaped me",
+    names: ["Milton & Karoline Carvajal", "Dr Anthony Krupp", "Luis Carlos Perea"],
+  },
+  {
+    title: "Bet on me",
+    names: [
+      "Dr Gokila Dorai",
+      "Dave Carvajal",
+      "The Tip Yourself founders",
+      "The Mimo founders",
+      "Andrew Strait",
+      "Mathias Molnar",
+    ],
+  },
+  {
+    title: "Built things with me",
+    names: [
+      "Samat Kadyrov",
+      "Lori Porumb",
+      "Radu Meister",
+      "Joseph O’Brien",
+      "Filip Ruisl",
+      "Helene Karlinger",
+      "Christopher Simerle",
+      "Filip Greš",
+      "Thomas Sattlecker",
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Lukas Carvajal">
@@ -49,6 +82,12 @@ const projects = (await getCollection("projects"))
     image="/resources/images/friends-in-flats-home-page.png"
     imageAlt="Screen recording of the Friends in Flats apartment listings homepage"
     video="/resources/video/friends-in-flats-demo.mp4"
+  />
+
+  <Acknowledgements
+    title="A special thanks to the people that"
+    groups={acknowledgementGroups}
+    note={"You make life a lot of fun and taught me loads over the years.\nEverything on this site happened because of you."}
   />
 </BaseLayout>
 

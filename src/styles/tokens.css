@@ -2,11 +2,13 @@
   /* Color roles */
   --color-background: #ffffff;
   --color-surface: #ffffff;
+  --color-surface-muted: #f2f2f2;
   --color-text: #111111;
   --color-text-muted: #666666;
   --color-border: #d9d9d9;
   --color-accent: #0000ee;
   --color-highlight: var(--color-text);
+  --color-footer: #2b2b2b;
   --color-focus: #005fcc;
 
   /* Font families */
@@ -48,6 +50,7 @@
   --height-header-expanded: 10.65rem;
   --height-header-compact: 4.5rem;
   --height-header-current: var(--height-header-expanded);
+  --height-footer: 20rem;
 
   /* Interaction */
   --focus-width: 0.1875rem;

@@ -1,0 +1,29 @@
+---
+import Acknowledgements from "../../../components/Acknowledgements.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const groups = [
+  {
+    title: "Shaped me",
+    names: ["Milton & Karoline Carvajal", "Dr Anthony Krupp", "Luis Carlos Perea"],
+  },
+  {
+    title: "Bet on me",
+    names: ["Dr Gokila Dorai", "Dave Carvajal", "The Tip Yourself founders"],
+  },
+  {
+    title: "Built things with me",
+    names: ["Samat Kadyrov", "Lori Porumb", "Radu Meister"],
+  },
+];
+---
+
+<BaseLayout title="Acknowledgements · Components · Lukas Carvajal">
+  <h1>Acknowledgements</h1>
+  <p>A grouped thank-you section.</p>
+  <Acknowledgements
+    title="A special thanks to the people that shaped me"
+    {groups}
+    note={"You make life a lot of fun and taught me loads over the years.\nEverything on this site happened because of you."}
+  />
+</BaseLayout>

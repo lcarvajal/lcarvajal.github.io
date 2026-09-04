@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter.astro";
 
 interface Props {
   title: string;
@@ -22,5 +23,6 @@ const { title, description = "The personal website of Lukas Carvajal." } = Astro
   <body>
     <SiteHeader client:load />
     <main><slot /></main>
+    <SiteFooter />
   </body>
 </html>
