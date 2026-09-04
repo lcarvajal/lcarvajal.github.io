@@ -48,7 +48,9 @@ export default function SiteHeader() {
       previousTime = currentTime;
     };
 
-    setCompact(window.matchMedia("(max-width: 48rem)").matches || window.scrollY > 0);
+    setCompact(
+      window.matchMedia("(max-width: 48rem)").matches || window.scrollY > 0,
+    );
     window.addEventListener("scroll", updateHeader, { passive: true });
     window.addEventListener("resize", updateHeader, { passive: true });
     return () => {
@@ -67,13 +69,19 @@ export default function SiteHeader() {
     };
 
     document.addEventListener("pointerdown", closeOnOutsideClick);
-    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+    return () =>
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
   }, [menuOpen]);
 
   return (
-    <header ref={headerRef} className={`site-header${compact ? " is-compact" : ""}`}>
+    <header
+      ref={headerRef}
+      className={`site-header${compact ? " is-compact" : ""}`}
+    >
       <div className="site-header__inner">
-        <a className="site-header__name" href="/">Lukas Carvajal</a>
+        <a className="site-header__name" href="/">
+          Lukas Carvajal
+        </a>
 
         <button
           className="site-header__menu-button"
@@ -90,7 +98,7 @@ export default function SiteHeader() {
 
         <nav className="site-header__primary-nav" aria-label="Main navigation">
           <a href="/bio">Bio</a>
-          <a href="/components">Components</a>
+          <a href="/components-preview">Components</a>
         </nav>
 
         <nav
@@ -98,8 +106,12 @@ export default function SiteHeader() {
           className={`site-header__menu${menuOpen ? " is-open" : ""}`}
           aria-label="Menu navigation"
         >
-          <a href="/bio" onClick={() => setMenuOpen(false)}>Bio</a>
-          <a href="/components" onClick={() => setMenuOpen(false)}>Components</a>
+          <a href="/bio" onClick={() => setMenuOpen(false)}>
+            Bio
+          </a>
+          <a href="/components-preview" onClick={() => setMenuOpen(false)}>
+            Components
+          </a>
         </nav>
       </div>
     </header>
