@@ -1,0 +1,19 @@
+---
+import SectionHighlight from "../../../components/SectionHighlight.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Current Project Highlight · Components · Lukas Carvajal">
+  <h1>Current Project Highlight</h1>
+  <p>A full-width callout for a current project.</p>
+
+  <SectionHighlight
+    title={"Now building:\nFriends in Flats"}
+    description="Generating €50,000 MRR for landlords, the public listing site is free to explore without creating an account."
+    href="https://friends-in-flats.com"
+    linkLabel="Open website"
+    image="/resources/images/friends-in-flats-home-page.png"
+    imageAlt="Screen recording of the Friends in Flats apartment listings homepage"
+    video="/resources/video/friends-in-flats-demo.mp4"
+  />
+</BaseLayout>
