@@ -7,7 +7,28 @@ html {
   line-height: var(--leading-body);
 }
 
+body {
+  margin: 0;
+}
+
 :focus-visible {
   outline: var(--focus-width) solid var(--color-focus);
   outline-offset: var(--focus-offset);
+}
+
+main {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--page-padding), 1fr)
+    minmax(0, var(--width-content))
+    minmax(var(--page-padding), 1fr);
+}
+
+main > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  grid-column: 1 / -1;
+  width: 100%;
 }

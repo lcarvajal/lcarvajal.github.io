@@ -19,13 +19,52 @@ const { title, description = "The personal website of Lukas Carvajal." } = Astro
     <title>{title}</title>
   </head>
   <body>
-    <header>
-      <a href="/">Lukas Carvajal</a>
+    <header class="site-header">
+      <a class="site-name" href="/">Lukas Carvajal</a>
       <nav aria-label="Main navigation">
-        <a href="/components">Components</a>
         <a href="/bio">Bio</a>
+        <a href="/components">Components</a>
       </nav>
     </header>
     <main><slot /></main>
   </body>
 </html>
+
+<style>
+  .site-header {
+    width: min(
+      calc(100% - (2 * var(--page-padding))),
+      var(--width-content)
+    );
+    margin-inline: auto;
+    padding-block: var(--space-12) var(--space-8);
+  }
+
+  .site-name {
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: var(--leading-heading);
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-top: var(--space-4);
+  }
+
+  nav a {
+    color: var(--color-text);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>
