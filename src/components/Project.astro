@@ -1,0 +1,131 @@
+---
+interface Highlight {
+  label: string;
+  value: string;
+  href?: string;
+}
+
+interface ProjectLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  summary: string;
+  highlights?: Highlight[];
+  projectLinks?: ProjectLink[];
+}
+
+const {
+  title,
+  summary,
+  highlights = [],
+  projectLinks = [],
+} = Astro.props;
+---
+
+<article class="project">
+  {Astro.slots.has("logo") && <div class="logo"><slot name="logo" /></div>}
+
+  <header>
+    <h2>{title}</h2>
+    <p>{summary}</p>
+  </header>
+
+  {highlights.length > 0 && (
+    <section aria-label="Highlights">
+      <h3>Highlights</h3>
+      <dl>
+        {highlights.map(({ label, value, href }) => (
+          <div>
+            <dt>{label}</dt>
+            <dd>{href ? <a href={href}>{value}</a> : value}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )}
+
+  {projectLinks.length > 0 && (
+    <section aria-label="Key projects">
+      <h3>Key projects</h3>
+      <ul>
+        {projectLinks.map(({ label, href }) => (
+          <li><a href={href}>{label} →</a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+</article>
+
+<style>
+  .project {
+    display: grid;
+    gap: var(--space-12);
+    max-width: var(--width-text);
+    padding-block: var(--space-12);
+  }
+
+  .logo {
+    max-width: var(--space-16);
+  }
+
+  .logo :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  header h2 {
+    margin-block: 0 var(--space-3);
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    line-height: var(--leading-heading);
+  }
+
+  header p,
+  h3,
+  dl,
+  ul {
+    margin-block: 0;
+  }
+
+  h3 {
+    margin-bottom: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  dl {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) 2fr;
+    gap: var(--space-4);
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  ul {
+    display: grid;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (max-width: 30rem) {
+    dl div {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+
+    dt {
+      font-weight: var(--weight-bold);
+    }
+  }
+</style>

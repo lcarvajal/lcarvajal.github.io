@@ -1,0 +1,32 @@
+---
+import StickySection from "../../../components/StickySection.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Sticky Section · Components · Lukas Carvajal">
+  <h1>Sticky Section</h1>
+  <p>A section whose heading remains visible while its content scrolls.</p>
+
+  <h2>Example</h2>
+  <StickySection
+    title="Selected projects"
+    description="The introduction remains in place while the project content moves past it."
+  >
+    <div class="example-item">Project one</div>
+    <div class="example-item">Project two</div>
+    <div class="example-item">Project three</div>
+  </StickySection>
+</BaseLayout>
+
+<style>
+  .example-item {
+    min-height: 24rem;
+    padding: var(--space-4);
+    color: var(--color-background);
+    background: var(--color-text);
+  }
+
+  .example-item + .example-item {
+    margin-top: var(--space-4);
+  }
+</style>

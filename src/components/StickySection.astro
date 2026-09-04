@@ -1,0 +1,58 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<section class="sticky-section">
+  <header>
+    <h2>{title}</h2>
+    {description && <p>{description}</p>}
+  </header>
+
+  <div class="content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .sticky-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-12);
+    align-items: start;
+    padding-block: var(--space-12);
+  }
+
+  header {
+    position: sticky;
+    top: var(--space-4);
+  }
+
+  h2 {
+    margin-block: 0 var(--space-3);
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    line-height: var(--leading-heading);
+  }
+
+  p {
+    max-width: var(--width-text);
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 48rem) {
+    .sticky-section {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    header {
+      position: static;
+    }
+  }
+</style>

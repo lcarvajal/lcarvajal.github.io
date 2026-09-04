@@ -12,6 +12,10 @@
   --font-body: system-ui, sans-serif;
   --font-heading: system-ui, sans-serif;
 
+  /* Font weights */
+  --weight-normal: 400;
+  --weight-bold: 700;
+
   /* Type scale */
   --text-sm: 0.875rem;
   --text-base: 1rem;
