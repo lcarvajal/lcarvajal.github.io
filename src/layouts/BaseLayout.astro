@@ -1,0 +1,28 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "The personal website of Lukas Carvajal." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <SiteHeader client:load />
+    <main><slot /></main>
+    <SiteFooter />
+  </body>
+</html>

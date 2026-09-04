@@ -1,0 +1,28 @@
+---
+import Project from "../../../components/Project.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const highlights = [
+  { label: "Role", value: "Project lead" },
+  { label: "Team", value: "Three people" },
+  { label: "Website", value: "example.com", href: "https://example.com" },
+];
+
+const projectLinks = [
+  { label: "Product design", href: "#" },
+  { label: "Technical implementation", href: "#" },
+];
+---
+
+<BaseLayout title="Project · Components · Lukas Carvajal">
+  <h1>Project</h1>
+  <p>A reusable summary of a project and its highlights.</p>
+
+  <h2>Example</h2>
+  <Project
+    title="A clear description of what the project accomplished"
+    summary="A concise explanation of the work, your contribution, and why it mattered."
+    {highlights}
+    {projectLinks}
+  />
+</BaseLayout>

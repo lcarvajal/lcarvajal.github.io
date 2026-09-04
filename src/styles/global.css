@@ -1,0 +1,39 @@
+@import "./tokens.css";
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: var(--leading-body);
+}
+
+body {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main > * {
+  align-self: flex-start;
+  width: min(
+    calc(100% - (2 * var(--page-padding))),
+    var(--width-content)
+  );
+  margin-left: max(
+    var(--page-padding),
+    calc((100% - var(--width-content)) / 2)
+  );
+}
+
+.full-bleed {
+  width: 100%;
+  margin-left: 0;
+}

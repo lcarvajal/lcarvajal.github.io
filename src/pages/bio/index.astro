@@ -1,0 +1,62 @@
+---
+import Bio, { frontmatter } from "../../content/bio.md";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Bio · Lukas Carvajal" description={frontmatter.description}>
+  <article>
+    <div class="bio-content">
+      <Bio />
+
+      <div class="bio-images">
+        <img
+          src="/resources/images/lukas-coding-with-helmet.jpg"
+          alt="Lukas working at a computer while wearing a bicycle helmet"
+          loading="lazy"
+        />
+        <img
+          src="/resources/images/lukas-soccer-kid.jpg"
+          alt="Lukas as a child wearing a soccer uniform"
+          loading="lazy"
+        />
+        <img
+          src="/resources/images/lukas-eating-burger.JPG"
+          alt="Lukas seated at a table with a burger"
+          loading="lazy"
+        />
+        <img
+          src="/resources/images/lukas-on-bike.JPG"
+          alt="Lukas riding a bicycle"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .bio-content {
+    max-width: var(--width-text);
+    padding-bottom: var(--space-16);
+  }
+
+  .bio-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-16);
+  }
+
+  .bio-images img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  @media (max-width: 30rem) {
+    .bio-images {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
