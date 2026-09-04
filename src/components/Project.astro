@@ -12,11 +12,17 @@ interface ProjectLink {
   href: string;
 }
 
+interface Recommendation {
+  label: string;
+  href: string;
+}
+
 interface Props {
   title: string;
   summary: string;
   highlights?: Highlight[];
   projectLinks?: ProjectLink[];
+  recommendation?: Recommendation;
 }
 
 const {
@@ -24,6 +30,7 @@ const {
   summary,
   highlights = [],
   projectLinks = [],
+  recommendation,
 } = Astro.props;
 ---
 
@@ -57,6 +64,13 @@ const {
           <li><a href={href}>{label} →</a></li>
         ))}
       </ul>
+    </section>
+  )}
+
+  {recommendation && (
+    <section aria-label="Recommendation">
+      <h3>Recommendation</h3>
+      <a href={recommendation.href}>{recommendation.label}</a>
     </section>
   )}
 </article>

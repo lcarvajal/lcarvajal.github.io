@@ -9,20 +9,31 @@ const projects = (await getCollection("projects"))
 ---
 
 <BaseLayout title="Lukas Carvajal">
-  <div class="hero-placeholder full-bleed" aria-hidden="true"></div>
-  <section class="intro">
-    <h1>Welcome</h1>
-    <p>Hope you enjoy seeing what I'm up to</p>
-    <hr />
+  <section class="opening full-bleed">
+    <figure class="hero">
+      <img
+        src="/resources/images/lukas-working-with-mimo-team.jpg"
+        alt="Lukas working with the Mimo team"
+      />
+      <figcaption>
+          From left to right: Kevin, Lukas, Donatien, and Filip
+      </figcaption>
+    </figure>
+    <div class="intro">
+      <h1>Let's go</h1>
+      <p>Hope you're excited for what I'm up to</p>
+    </div>
+    <hr class="intro-divider" />
   </section>
 
-  <StickySection title="Startup portfolio" description="Products I helped build and grow.">
+  <StickySection title="Startup portfolio" description="">
     {projects.map(({ data }) => (
       <Project
         title={data.title}
         summary={data.summary}
         highlights={data.highlights}
         projectLinks={data.projectLinks}
+        recommendation={data.recommendation}
       >
         <img slot="logo" src={data.logo} alt={`${data.name} logo`} />
       </Project>
@@ -31,18 +42,75 @@ const projects = (await getCollection("projects"))
 </BaseLayout>
 
 <style>
-  .hero-placeholder {
-    height: min(60vh, 40rem);
+  .opening {
+    display: grid;
+    grid-template-rows: minmax(20rem, 1fr) auto auto;
+    height: calc(
+      100svh - var(--height-header-expanded) - var(--space-16) - var(--space-12)
+    );
+  }
+
+  .hero {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
     background: var(--color-text);
   }
 
+  .hero img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero figcaption {
+    position: absolute;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    max-width: var(--width-text);
+    color: var(--color-background);
+    font-size: var(--text-sm);
+    text-align: right;
+    z-index: 1;
+  }
+
   .intro {
+    width: min(
+      calc(100% - (2 * var(--page-padding))),
+      var(--width-content)
+    );
+    margin-inline: auto;
     padding-top: var(--space-8);
   }
 
-  .intro hr {
+  .intro h1 {
+    margin-block: 0 var(--space-3);
+    font-size: var(--text-4xl);
+  }
+
+  .intro p {
+    margin: 0;
+  }
+
+  .intro-divider {
+    width: 100%;
     margin-block: var(--space-8) 0;
+    margin-inline: 0;
     border: 0;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-text);
+  }
+
+  @media (max-width: 48rem) {
+    .opening {
+      height: calc(
+        100svh - var(--height-header-compact) - var(--space-16) - var(--space-12)
+      );
+    }
   }
 </style>

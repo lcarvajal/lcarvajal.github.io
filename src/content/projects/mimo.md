@@ -23,6 +23,9 @@ projectLinks:
     href: /projects/mimo#concept-chunking-with-gamification
   - label: The Learn to Code Track
     href: /projects/mimo#the-learn-to-code-track
+recommendation:
+  label: Recommendation from Lorenz, CPO
+  href: /recommendations/lorenz-schimik
 ---
 
 ## Scaling content generation

@@ -23,6 +23,9 @@ projectLinks:
     href: /projects/tip-yourself#booking-system-with-payments
   - label: Listing algorithm and pricing engine
     href: /projects/tip-yourself#listing-algorithm-and-pricing-engine
+recommendation:
+  label: Recommendation from Mike, CEO
+  href: /recommendations/mike-lenz
 ---
 
 ## Organic tenant growth

@@ -21,7 +21,7 @@ const { title, description } = Astro.props;
 <style>
   .sticky-section {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--width-text));
     gap: var(--space-12);
     align-items: start;
     padding-block: var(--space-12);
@@ -29,13 +29,14 @@ const { title, description } = Astro.props;
 
   header {
     position: sticky;
-    top: var(--space-4);
+    top: calc(var(--height-header-current) + var(--space-4));
+    transition: top var(--duration-normal) var(--ease-standard);
   }
 
   h2 {
     margin-block: 0 var(--space-3);
     font-family: var(--font-heading);
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
     line-height: var(--leading-heading);
   }
 
@@ -43,6 +44,10 @@ const { title, description } = Astro.props;
     max-width: var(--width-text);
     margin: 0;
     color: var(--color-text-muted);
+  }
+
+  .content {
+    padding-top: var(--space-12);
   }
 
   @media (max-width: 48rem) {
@@ -53,6 +58,11 @@ const { title, description } = Astro.props;
 
     header {
       position: static;
+      transition: none;
+    }
+
+    .content {
+      padding-top: 0;
     }
   }
 </style>

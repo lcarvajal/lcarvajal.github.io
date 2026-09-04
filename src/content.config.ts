@@ -19,7 +19,20 @@ const projects = defineCollection({
       label: z.string(),
       href: z.string(),
     })),
+    recommendation: z.object({
+      label: z.string(),
+      href: z.string(),
+    }).optional(),
   }),
 });
 
-export const collections = { projects };
+const recommendations = defineCollection({
+  loader: glob({ base: "./src/content/recommendations", pattern: "**/*.md" }),
+  schema: z.object({
+    author: z.string(),
+    role: z.string(),
+    image: z.string(),
+  }),
+});
+
+export const collections = { projects, recommendations };

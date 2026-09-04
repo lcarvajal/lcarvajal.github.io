@@ -19,16 +19,21 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 main > * {
+  align-self: flex-start;
   width: min(
     calc(100% - (2 * var(--page-padding))),
     var(--width-content)
+  );
+  margin-left: max(
+    var(--page-padding),
+    calc((100% - var(--width-content)) / 2)
   );
 }
 
 .full-bleed {
   width: 100%;
+  margin-left: 0;
 }

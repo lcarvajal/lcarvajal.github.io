@@ -8,6 +8,17 @@ export default function SiteHeader() {
   const menuId = useId();
 
   useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--height-header-current",
+      `var(--height-header-${compact ? "compact" : "expanded"})`,
+    );
+
+    return () => {
+      document.documentElement.style.removeProperty("--height-header-current");
+    };
+  }, [compact]);
+
+  useEffect(() => {
     const collapseSpeed = 0.08;
     let previousY = window.scrollY;
     let previousTime = performance.now();

@@ -23,6 +23,7 @@
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
   --text-3xl: 3rem;
+  --text-4xl: 4rem;
 
   /* Line height */
   --leading-body: 1.5;
@@ -42,6 +43,9 @@
   --width-content: 70rem;
   --width-text: 70ch;
   --page-padding: 1rem;
+  --height-header-expanded: 12.65rem;
+  --height-header-compact: 4.5rem;
+  --height-header-current: var(--height-header-expanded);
 
   /* Interaction */
   --focus-width: 0.1875rem;
