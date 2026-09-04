@@ -46,4 +46,9 @@
   /* Interaction */
   --focus-width: 0.1875rem;
   --focus-offset: 0.1875rem;
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 350ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
