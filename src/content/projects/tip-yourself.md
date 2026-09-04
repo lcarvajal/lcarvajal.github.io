@@ -17,19 +17,19 @@ highlights:
   - label: Status
     value: Acquired
 projectLinks:
-  - label: Organic tenant growth
-    href: /projects/tip-yourself#organic-tenant-growth
-  - label: Booking system with payments
-    href: /projects/tip-yourself#booking-system-with-payments
-  - label: Listing algorithm and pricing engine
-    href: /projects/tip-yourself#listing-algorithm-and-pricing-engine
+  - label: iOS launch
+    href: /projects/tip-yourself#ios-launch
+  - label: Online bank transactions system
+    href: /projects/tip-yourself#online-bank-transactions-system
+  - label: Social network
+    href: /projects/tip-yourself#social-network
 recommendation:
   label: Recommendation from Mike, CEO
   href: /recommendations/mike-lenz
 ---
 
-## Organic tenant growth
+## iOS launch
 
-## Booking system with payments
+## Online bank transactions system
 
-## Listing algorithm and pricing engine
+## Social network

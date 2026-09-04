@@ -1,6 +1,6 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
 }
 
@@ -9,7 +9,7 @@ const { title, description } = Astro.props;
 
 <section class="sticky-section">
   <header>
-    <h2>{title}</h2>
+    <h2><slot name="title">{title}</slot></h2>
     {description && <p>{description}</p>}
   </header>
 
@@ -40,6 +40,15 @@ const { title, description } = Astro.props;
     line-height: var(--leading-heading);
   }
 
+  h2 :global(img) {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: var(--space-16);
+    object-fit: contain;
+    object-position: left center;
+  }
+
   p {
     max-width: var(--width-text);
     margin: 0;
@@ -47,7 +56,11 @@ const { title, description } = Astro.props;
   }
 
   .content {
-    padding-top: var(--space-12);
+    min-width: 0;
+  }
+
+  .content :global(.project) {
+    padding-top: 0;
   }
 
   @media (max-width: 48rem) {
@@ -61,8 +74,5 @@ const { title, description } = Astro.props;
       transition: none;
     }
 
-    .content {
-      padding-top: 0;
-    }
   }
 </style>

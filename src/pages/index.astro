@@ -60,19 +60,25 @@ const acknowledgementGroups = [
     <hr class="intro-divider" />
   </section>
 
-  <StickySection title="Startup portfolio" description="">
-    {projects.map(({ data }) => (
+  <h2 class="portfolio-heading">Startup portfolio</h2>
+
+  {projects.map(({ data }) => (
+    <StickySection>
+      <img
+        class="portfolio-logo"
+        slot="title"
+        src={data.logo}
+        alt={`${data.name} logo`}
+      />
       <Project
         title={data.title}
         summary={data.summary}
         highlights={data.highlights}
         projectLinks={data.projectLinks}
         recommendation={data.recommendation}
-      >
-        <img slot="logo" src={data.logo} alt={`${data.name} logo`} />
-      </Project>
-    ))}
-  </StickySection>
+      />
+    </StickySection>
+  ))}
 
   <CurrentProjectHighlight
     title={"Now building:\nFriends in Flats"}
@@ -167,6 +173,24 @@ const acknowledgementGroups = [
     margin-inline: 0;
     border: 0;
     border-top: 1px solid var(--color-text);
+  }
+
+  .portfolio-heading {
+    box-sizing: border-box;
+    min-height: calc(var(--space-16) + var(--space-12));
+    margin-block: 0;
+    padding-top: var(--space-12);
+    font-size: var(--text-3xl);
+    line-height: var(--leading-heading);
+  }
+
+  .portfolio-logo {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: var(--space-16);
+    object-fit: contain;
+    object-position: left center;
   }
 
   @media (max-width: 48rem) {
