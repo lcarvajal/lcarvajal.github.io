@@ -1,5 +1,7 @@
 <footer class="site-footer full-bleed">
-  <div class="site-footer__inner"></div>
+  <div class="site-footer__inner">
+      <a href="/components-preview">Components powering this website</a>
+  </div>
 </footer>
 
 <style>
@@ -13,5 +15,17 @@
     width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
     min-height: var(--height-footer);
     margin-inline: auto;
+    padding-block: var(--space-16);
+  }
+
+  .site-footer a {
+    color: inherit;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--weight-normal);
+  }
+
+  .site-footer a:hover {
+    text-decoration: none;
   }
 </style>
