@@ -206,9 +206,9 @@ const acknowledgementGroups = [
 
   .portfolio-logo {
     display: block;
-    width: auto;
+    width: 100%;
     max-width: 100%;
-    height: var(--height-project-logo);
+    height: auto;
     object-fit: contain;
     object-position: left center;
   }
@@ -219,7 +219,7 @@ const acknowledgementGroups = [
     place-items: center;
     width: 100%;
     height: var(--height-project-logo-background);
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-8) var(--space-12);
   }
 
   .portfolio-logo-background--mimo {
@@ -239,8 +239,9 @@ const acknowledgementGroups = [
   }
 
   .portfolio-logo-background .portfolio-logo {
-    width: auto;
-    margin-inline: auto;
+    width: 100%;
+    margin: auto;
+    object-position: center;
   }
 
   @media (max-width: 48rem) {

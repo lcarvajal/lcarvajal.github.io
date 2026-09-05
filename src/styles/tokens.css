@@ -56,8 +56,7 @@
   --height-header-compact: 4.5rem;
   --height-header-current: var(--height-header-expanded);
   --height-footer: 20rem;
-  --height-project-logo: var(--space-12);
-  --height-project-logo-background: calc(var(--height-project-logo) * 3);
+  --height-project-logo-background: calc(var(--space-16) * 3);
 
   /* Interaction */
   --focus-width: 0.1875rem;

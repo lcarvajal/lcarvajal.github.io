@@ -60,8 +60,8 @@ const {
     <section aria-label="Key projects">
       <h3>Key projects</h3>
       <ul>
-        {projectLinks.map(({ label }) => (
-          <li>{label}</li>
+        {projectLinks.map(({ label, href }) => (
+          <li><a href={href}>{label} →</a></li>
         ))}
       </ul>
     </section>
