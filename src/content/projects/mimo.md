@@ -2,7 +2,7 @@
 name: Mimo
 logo: /resources/images/mimo-logo-purple.webp
 title: Teaching 25,000,000 people to learn to code
-summary: As first product manager, I led two teams toward the Mimo mission of making coding accessible to everyone.
+summary: As product manager, I led two teams toward the Mimo mission of making coding accessible to everyone.
 order: 2
 highlights:
   - label: Key metric

@@ -98,6 +98,7 @@ export default function SiteHeader() {
 
         <nav className="site-header__primary-nav" aria-label="Main navigation">
           <a href="/bio">Bio</a>
+          <a href="/components-preview">Components</a>
         </nav>
 
         <nav
@@ -107,6 +108,9 @@ export default function SiteHeader() {
         >
           <a href="/bio" onClick={() => setMenuOpen(false)}>
             Bio
+          </a>
+          <a href="/components-preview" onClick={() => setMenuOpen(false)}>
+            Components
           </a>
         </nav>
       </div>

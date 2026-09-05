@@ -12,8 +12,8 @@
   --color-focus: #005fcc;
 
   /* Font families */
-  --font-body: "Instrument Sans", system-ui, sans-serif;
-  --font-heading: "Urbanist", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-heading: "Barlow", system-ui, sans-serif;
 
   /* Font weights */
   --weight-normal: 400;
@@ -45,8 +45,9 @@
 
   /* Layout */
   --width-content: 70rem;
-  --width-text: 70ch;
+  --width-text: 60ch;
   --width-media: 32rem;
+  --width-sidebar: 16rem;
   --page-padding: 1rem;
   --height-header-expanded: 10.65rem;
   --height-header-compact: 4.5rem;

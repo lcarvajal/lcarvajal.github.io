@@ -21,7 +21,7 @@ const { title, description } = Astro.props;
 <style>
   .sticky-section {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, var(--width-text));
+    grid-template-columns: minmax(0, var(--width-sidebar)) minmax(0, var(--width-text));
     gap: var(--space-12);
     align-items: start;
     padding-block: var(--space-12);
@@ -63,7 +63,7 @@ const { title, description } = Astro.props;
     padding-top: 0;
   }
 
-  @media (max-width: 48rem) {
+  @media (max-width: 56rem) {
     .sticky-section {
       grid-template-columns: 1fr;
       gap: var(--space-6);
