@@ -64,12 +64,32 @@ const acknowledgementGroups = [
 
   {projects.map(({ data }) => (
     <StickySection>
-      <img
-        class="portfolio-logo"
-        slot="title"
-        src={data.logo}
-        alt={`${data.name} logo`}
-      />
+      {data.name === "Friends in Flats" || data.name === "Mimo" || data.name === "Tip Yourself" ? (
+        <div
+          class:list={[
+            "portfolio-logo-background",
+            {
+              "portfolio-logo-background--mimo": data.name === "Mimo",
+              "portfolio-logo-background--tip-yourself": data.name === "Tip Yourself",
+              "portfolio-logo-background--friends-in-flats": data.name === "Friends in Flats",
+            },
+          ]}
+          slot="title"
+        >
+          <img
+            class="portfolio-logo"
+            src={data.logo}
+            alt={`${data.name} logo`}
+          />
+        </div>
+      ) : (
+        <img
+          class="portfolio-logo"
+          slot="title"
+          src={data.logo}
+          alt={`${data.name} logo`}
+        />
+      )}
       <Project
         title={data.title}
         summary={data.summary}
@@ -188,9 +208,39 @@ const acknowledgementGroups = [
     display: block;
     width: auto;
     max-width: 100%;
-    height: var(--space-16);
+    height: var(--height-project-logo);
     object-fit: contain;
     object-position: left center;
+  }
+
+  .portfolio-logo-background {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: var(--height-project-logo-background);
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .portfolio-logo-background--mimo {
+    background: var(--color-brand-mimo);
+  }
+
+  .portfolio-logo-background--tip-yourself {
+    background: var(--color-brand-tip-yourself);
+  }
+
+  .portfolio-logo-background--friends-in-flats {
+    background: var(--color-brand-friends-in-flats);
+  }
+
+  .portfolio-logo-background--friends-in-flats .portfolio-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  .portfolio-logo-background .portfolio-logo {
+    width: auto;
+    margin-inline: auto;
   }
 
   @media (max-width: 48rem) {
