@@ -26,6 +26,7 @@ h5,
 h6 {
   font-family: var(--font-heading);
   font-weight: var(--weight-heading);
+  text-transform: lowercase;
 }
 
 :focus-visible {
