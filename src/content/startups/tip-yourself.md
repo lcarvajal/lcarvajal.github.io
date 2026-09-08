@@ -16,20 +16,7 @@ highlights:
     href: https://www.earnin.com/products/savings-jars
   - label: Status
     value: Acquired
-projectLinks:
-  - label: iOS launch
-    href: /projects/tip-yourself#ios-launch
-  - label: Online bank transactions system
-    href: /projects/tip-yourself#online-bank-transactions-system
-  - label: Social network
-    href: /projects/tip-yourself#social-network
 recommendation:
   label: Recommendation from Mike, CEO
   href: /recommendations/mike-lenz
 ---
-
-## iOS launch
-
-## Online bank transactions system
-
-## Social network

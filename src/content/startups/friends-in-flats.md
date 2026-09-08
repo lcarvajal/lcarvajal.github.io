@@ -16,17 +16,4 @@ highlights:
     href: https://friends-in-flats.com
   - label: Status
     value: Live
-projectLinks:
-  - label: Organic tenant growth
-    href: /projects/friends-in-flats#organic-tenant-growth
-  - label: Booking and payments system
-    href: /projects/friends-in-flats#booking-and-payments-system
-  - label: Listing algorithms
-    href: /projects/friends-in-flats#listing-algorithms
 ---
-
-## Organic tenant growth
-
-## Booking and payments system
-
-## Listing algorithms

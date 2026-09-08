@@ -16,20 +16,7 @@ highlights:
     href: https://mimo.org
   - label: Status
     value: Live
-projectLinks:
-  - label: Scaling content generation
-    href: /projects/mimo#scaling-content-generation
-  - label: Concept chunking with gamification
-    href: /projects/mimo#concept-chunking-with-gamification
-  - label: The Learn to Code Track
-    href: /projects/mimo#the-learn-to-code-track
 recommendation:
   label: Recommendation from Lorenz, CPO
   href: /recommendations/lorenz-schimik
 ---
-
-## Scaling content generation
-
-## Concept chunking with gamification
-
-## The Learn to Code Track

@@ -6,8 +6,9 @@ import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
 import { getCollection } from "astro:content";
 
-const projects = (await getCollection("projects"))
+const startups = (await getCollection("startups"))
   .sort((a, b) => a.data.order - b.data.order);
+const keyProjects = await getCollection("keyProjects");
 
 const acknowledgementGroups = [
   {
@@ -62,8 +63,8 @@ const acknowledgementGroups = [
 
   <h2 class="portfolio-heading">Startup portfolio</h2>
 
-  {projects.map(({ data }) => (
-    <StickySection>
+  {startups.map(({ id, data }) => (
+    <StickySection id={id}>
       {data.name === "Friends in Flats" || data.name === "Mimo" || data.name === "Tip Yourself" ? (
         <div
           class:list={[
@@ -94,7 +95,13 @@ const acknowledgementGroups = [
         title={data.title}
         summary={data.summary}
         highlights={data.highlights}
-        projectLinks={data.projectLinks}
+        projectLinks={keyProjects
+          .filter((project) => project.data.startup === id)
+          .sort((a, b) => a.data.order - b.data.order)
+          .map((project) => ({
+            label: project.data.title,
+            href: `/startups/${id}/projects/${project.id.split("/").at(-1)}`,
+          }))}
         recommendation={data.recommendation}
       />
     </StickySection>

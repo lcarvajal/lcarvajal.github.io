@@ -2,8 +2,8 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
-const projects = defineCollection({
-  loader: glob({ base: "./src/content/projects", pattern: "**/*.md" }),
+const startups = defineCollection({
+  loader: glob({ base: "./src/content/startups", pattern: "**/*.md" }),
   schema: z.object({
     name: z.string(),
     logo: z.string(),
@@ -15,14 +15,20 @@ const projects = defineCollection({
       value: z.string(),
       href: z.string().optional(),
     })),
-    projectLinks: z.array(z.object({
-      label: z.string(),
-      href: z.string(),
-    })),
     recommendation: z.object({
       label: z.string(),
       href: z.string(),
     }).optional(),
+  }),
+});
+
+const keyProjects = defineCollection({
+  loader: glob({ base: "./src/content/key-projects", pattern: "**/*.md" }),
+  schema: z.object({
+    startup: z.string(),
+    title: z.string(),
+    summary: z.string(),
+    order: z.number(),
   }),
 });
 
@@ -35,4 +41,4 @@ const recommendations = defineCollection({
   }),
 });
 
-export const collections = { projects, recommendations };
+export const collections = { keyProjects, recommendations, startups };

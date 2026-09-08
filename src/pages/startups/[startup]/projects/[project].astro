@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const [keyProjects, startups] = await Promise.all([
+    getCollection("keyProjects"),
+    getCollection("startups"),
+  ]);
+
+  return keyProjects.map((project) => {
+    const startup = startups.find(({ id }) => id === project.data.startup);
+
+    if (!startup) {
+      throw new Error(`Unknown startup '${project.data.startup}' for key project '${project.id}'.`);
+    }
+
+    return {
+      params: {
+        startup: startup.id,
+        project: project.id.split("/").at(-1),
+      },
+      props: { project, startup },
+    };
+  });
+}
+
+const { project, startup } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout
+  title={`${project.data.title} · ${startup.data.name} · Lukas Carvajal`}
+  description={project.data.summary}
+>
+  <article class="key-project-detail">
+    <nav aria-label="Breadcrumb">
+      <a href="/">Startup portfolio</a>
+      <span aria-hidden="true">/</span>
+      <a href={`/startups/${startup.id}`}>{startup.data.name}</a>
+    </nav>
+    <h1>{project.data.title}</h1>
+    <p class="summary">{project.data.summary}</p>
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .key-project-detail {
+    box-sizing: border-box;
+    max-width: var(--width-text);
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  nav {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-12);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  h1 {
+    margin-block: 0 var(--space-4);
+    font-size: var(--text-3xl);
+    line-height: var(--leading-heading);
+  }
+
+  .summary {
+    margin: 0;
+    font-size: var(--text-lg);
+  }
+</style>

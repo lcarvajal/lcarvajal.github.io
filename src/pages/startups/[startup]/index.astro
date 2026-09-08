@@ -1,0 +1,119 @@
+---
+import { getCollection } from "astro:content";
+import Project from "../../../components/Project.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const [keyProjects, startups] = await Promise.all([
+    getCollection("keyProjects"),
+    getCollection("startups"),
+  ]);
+
+  return startups.map((startup) => ({
+    params: { startup: startup.id },
+    props: {
+      startup,
+      keyProjects: keyProjects
+        .filter((project) => project.data.startup === startup.id)
+        .sort((a, b) => a.data.order - b.data.order),
+    },
+  }));
+}
+
+const { startup, keyProjects } = Astro.props;
+const projectLinks = keyProjects.map((project) => ({
+  label: project.data.title,
+  href: `/startups/${startup.id}/projects/${project.id.split("/").at(-1)}`,
+}));
+---
+
+<BaseLayout
+  title={`${startup.data.name} · Lukas Carvajal`}
+  description={startup.data.summary}
+>
+  <article class="startup-detail">
+    <nav aria-label="Breadcrumb">
+      <a href="/">Startup portfolio</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{startup.data.name}</span>
+    </nav>
+
+    <header class="startup-header">
+      <div class:list={["startup-logo", `startup-logo--${startup.id}`]}>
+        <img src={startup.data.logo} alt={`${startup.data.name} logo`} />
+      </div>
+      <h1>{startup.data.name}</h1>
+    </header>
+
+    <Project
+      title={startup.data.title}
+      summary={startup.data.summary}
+      highlights={startup.data.highlights}
+      {projectLinks}
+      recommendation={startup.data.recommendation}
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  .startup-detail {
+    box-sizing: border-box;
+    max-width: var(--width-text);
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  nav {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-12);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .startup-header {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .startup-logo {
+    box-sizing: border-box;
+    display: grid;
+    min-height: var(--height-project-logo-background);
+    padding: var(--space-8) var(--space-12);
+    place-items: center;
+  }
+
+  .startup-logo--friends-in-flats {
+    background: var(--color-brand-friends-in-flats);
+  }
+
+  .startup-logo--mimo {
+    background: var(--color-brand-mimo);
+  }
+
+  .startup-logo--tip-yourself {
+    background: var(--color-brand-tip-yourself);
+  }
+
+  .startup-logo--friends-in-flats img {
+    filter: brightness(0) invert(1);
+  }
+
+  .startup-logo img {
+    display: block;
+    width: min(var(--width-project-logo), var(--width-media));
+    max-height: var(--space-16);
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .startup-header h1 {
+    margin: 0;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-heading);
+  }
+
+  .startup-header + :global(.project) {
+    padding-top: var(--space-8);
+  }
+</style>
