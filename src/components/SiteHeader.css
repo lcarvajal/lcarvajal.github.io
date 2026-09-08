@@ -25,7 +25,6 @@
   font-weight: var(--weight-heading);
   line-height: var(--leading-heading);
   text-decoration: none;
-  text-transform: lowercase;
   transition: font-size var(--duration-normal) var(--ease-standard);
 }
 
@@ -51,7 +50,6 @@
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
   text-decoration: none;
-  text-transform: lowercase;
 }
 
 .site-header__primary-nav a:hover,
