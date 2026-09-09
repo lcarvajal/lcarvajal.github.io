@@ -70,4 +70,20 @@ const { Content } = await render(project);
     margin: 0;
     font-size: var(--text-lg);
   }
+
+  .key-project-detail :global(.project-media) {
+    margin: var(--space-8) 0 var(--space-12);
+  }
+
+  .key-project-detail :global(.project-media img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .key-project-detail :global(.project-media figcaption) {
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
 </style>
