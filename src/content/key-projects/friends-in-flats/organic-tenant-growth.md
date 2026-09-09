@@ -15,6 +15,8 @@ order: 1
 - Landlords’ MRR increased from €700 to €50,000 per month
 - Monthly spending decreased by €8,000
 
+As a marketplace, the increase in revenue was a team effort with Mathias (CEO) who brought in all the listings. In order to switch over from manual responses to AI, he also played a huge role in responding to requests manually as we automated things away.
+
 ## Setting up tracking with PostHog
 
 When I first joined, I saw we weren’t tracking conversions correctly through existing tools, so I set up PostHog to start monitoring events. I then ran tests and monitored results for every project we worked on.
