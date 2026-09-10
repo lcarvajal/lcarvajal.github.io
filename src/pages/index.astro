@@ -46,7 +46,7 @@ const acknowledgementGroups = [
 
 <BaseLayout
   title="Lukas Carvajal - CTO and Product engineer"
-  description="Lukas Carvajal co-founded Tip Yourself (aquired), developed a crucial part of the learning experience at Mimo, and now works on Friends in Flats, generating €80K+ in monthly bookings."
+  description="Lukas Carvajal co-founded Tip Yourself (aquired), ran a crucial part of the learning experience at Mimo, and now works on Friends in Flats, generating €80K+ in monthly bookings."
 >
   <section class="opening full-bleed">
     <figure class="hero">
@@ -62,8 +62,10 @@ const acknowledgementGroups = [
       </figcaption>
     </figure>
     <div class="intro">
-        <h1>10 / 10</h1>
-        <p>Hope you're fired up, ready to go</p>
+        <h1>Launching since 2014</h1>
+      <div class="intro-copy">
+        <p>After launching Tip Yourself (aquired) and developing Mimo's core learning experience, I'm building Friends in Flats - a rental marketplace generating €80K+ in monthly bookings.</p>
+      </div>
     </div>
     <hr class="intro-divider" />
   </section>
@@ -200,6 +202,10 @@ const acknowledgementGroups = [
     padding-top: var(--space-8);
   }
 
+  .intro-copy {
+    width: min(100%, var(--width-text));
+  }
+
   .intro h1 {
     margin-block: 0 var(--space-3);
     font-size: var(--text-4xl);
@@ -269,6 +275,13 @@ const acknowledgementGroups = [
     width: var(--width-project-logo);
     margin: auto;
     object-position: center;
+  }
+
+  @media (max-width: 56rem) {
+    .portfolio-logo-background,
+    .portfolio-logo-link {
+      max-width: var(--width-media);
+    }
   }
 
   @media (max-width: 48rem) {
