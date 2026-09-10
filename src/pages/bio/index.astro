@@ -1,9 +1,21 @@
 ---
 import Bio, { frontmatter } from "../../content/bio.md";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@id": "https://lukascarvajal.com#person",
+    "@type": "Person",
+    name: "Lukas Carvajal",
+    jobTitle: "Product Engineer",
+    url: "https://lukascarvajal.com",
+  },
+};
 ---
 
-<BaseLayout title="Bio · Lukas Carvajal" description={frontmatter.description}>
+<BaseLayout title="Bio · Lukas Carvajal" description={frontmatter.description} structuredData={profilePageSchema}>
   <article>
     <div class="bio-content">
       <Bio />
@@ -12,21 +24,29 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <img
           src="/resources/images/lukas-coding-with-helmet.jpg"
           alt="Lukas working at a computer while wearing a bicycle helmet"
+          width="1600"
+          height="1200"
           loading="lazy"
         />
         <img
           src="/resources/images/lukas-soccer-kid.jpg"
           alt="Lukas as a child wearing a soccer uniform"
+          width="819"
+          height="1024"
           loading="lazy"
         />
         <img
           src="/resources/images/lukas-eating-burger.JPG"
           alt="Lukas seated at a table with a burger"
+          width="1019"
+          height="1525"
           loading="lazy"
         />
         <img
-          src="/resources/images/lukas-on-bike.JPG"
+          src="/resources/images/lukas-on-bike.webp"
           alt="Lukas riding a bicycle"
+          width="1200"
+          height="1200"
           loading="lazy"
         />
       </div>

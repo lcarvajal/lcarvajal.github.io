@@ -1,21 +1,21 @@
 ---
 startup: friends-in-flats
-title: Organic tenant growth
-summary: By interviewing users, rapidly iterating on the product, and building an AI support agent, I cut costs by €8,000 per month while increasing landlords’ MRR from €700 to over €50,000.
+title: "Organic tenant growth: from €5,000 to €84,000 in monthly bookings"
+summary: By interviewing users, rapidly iterating on the product, and building an AI support agent, I cut costs by €8,000 per month while increasing revenue.
 order: 1
 ---
 
 ## The effect
 
 <figure class="project-media">
-  <img src="/resources/images/friends-in-flats-revenue-graph.png" alt="Friends in Flats growth graph rising sharply after Lukas joined in Q3 2024" />
+  <img src="/resources/images/friends-in-flats-revenue-graph.png" alt="Friends in Flats growth graph rising sharply after Lukas joined in Q3 2024" width="2244" height="1132" loading="lazy" />
   <figcaption>Friends in Flats revenue growth after I joined in Q3 2024.</figcaption>
 </figure>
 
-- Landlords’ MRR increased from €700 to €50,000 per month
+- Average monthly bookings increased from €5,000 to €84,000 per month
 - Monthly spending decreased by €8,000
 
-As a marketplace, the increase in revenue was a team effort with Mathias (CEO) who brought in all the listings. In order to switch over from manual responses to AI, he also played a huge role in responding to requests manually as we automated things away.
+As a marketplace, the increase in revenue was a team effort with Mathias (CEO) who brought in all the listings and helped with support while switching over from manual responses to AI.
 
 ## Setting up tracking with PostHog
 

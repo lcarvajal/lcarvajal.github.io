@@ -27,17 +27,46 @@ export async function getStaticPaths() {
 
 const { project, startup } = Astro.props;
 const { Content } = await render(project);
+const startupUrl = new URL(`/startups/${startup.id}/`, Astro.site);
+const projectUrl = new URL(`${Astro.url.pathname.replace(/\/$/, "")}/`, Astro.site);
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Startup portfolio",
+      item: new URL("/", Astro.site).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: startup.data.name,
+      item: startupUrl.toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: project.data.title,
+      item: projectUrl.toString(),
+    },
+  ],
+};
 ---
 
 <BaseLayout
   title={`${project.data.title} · ${startup.data.name} · Lukas Carvajal`}
   description={project.data.summary}
+  image={project.data.startup === "friends-in-flats" ? "/resources/images/friends-in-flats-revenue-graph.png" : undefined}
+  imageAlt={project.data.startup === "friends-in-flats" ? "Friends in Flats revenue growth after Lukas joined" : undefined}
+  structuredData={breadcrumbSchema}
 >
   <article class="key-project-detail">
     <nav aria-label="Breadcrumb">
       <a href="/">Startup portfolio</a>
       <span aria-hidden="true">/</span>
-      <a href={`/startups/${startup.id}`}>{startup.data.name}</a>
+      <a href={`/startups/${startup.id}/`}>{startup.data.name}</a>
     </nav>
     <h1>{project.data.title}</h1>
     <p class="summary">{project.data.summary}</p>

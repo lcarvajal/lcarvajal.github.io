@@ -27,7 +27,7 @@ const { title, description, href, linkLabel, image, imageAlt, video } = Astro.pr
         <source src={video} type="video/mp4" />
       </video>
     ) : (
-      <img src={image} alt={imageAlt} loading="lazy" />
+      <img src={image} alt={imageAlt} width="1920" height="1080" loading="lazy" />
     )}
   </div>
 </section>

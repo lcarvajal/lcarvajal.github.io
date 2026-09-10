@@ -6,9 +6,48 @@ import SiteFooter from "../components/SiteFooter.astro";
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description = "The personal website of Lukas Carvajal." } = Astro.props;
+const {
+  title,
+  description = "The personal website of Lukas Carvajal.",
+  image = "/resources/images/og-lukas-carvajal.jpg",
+  imageAlt = "Lukas Carvajal working with a product team",
+  noindex = Astro.url.pathname.startsWith("/components-preview"),
+  structuredData,
+} = Astro.props;
+const site = Astro.site ?? new URL("https://lukascarvajal.com");
+const canonicalPath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(canonicalPath, site);
+const socialImage = new URL(image, site);
+const globalStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site}#website`,
+    url: site.toString(),
+    name: "Lukas Carvajal",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${site}#person`,
+    name: "Lukas Carvajal",
+    jobTitle: "Product Engineer",
+    url: site.toString(),
+  },
+];
+const pageStructuredData = structuredData
+  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  : [];
+const jsonLd = JSON.stringify([...globalStructuredData, ...pageStructuredData])
+  .replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -17,7 +56,22 @@ const { title, description = "The personal website of Lukas Carvajal." } = Astro
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lukas Carvajal" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <script type="application/ld+json" set:html={jsonLd} is:inline></script>
     <title>{title}</title>
   </head>
   <body>

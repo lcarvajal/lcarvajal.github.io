@@ -5,5 +5,10 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://lukascarvajal.com",
   output: "static",
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.includes("/components-preview/"),
+    }),
+  ],
 });

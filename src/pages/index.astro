@@ -20,10 +20,10 @@ const acknowledgementGroups = [
     names: [
       "Dr Gokila Dorai",
       "Dave Carvajal",
-      "The Tip Yourself founders",
-      "The Mimo founders",
+      "The Tip Yourself Founders",
+      "The Mimo Founders",
+      "The Friends in Flats Founders",
       "Andrew Strait",
-      "Mathias Molnar",
     ],
   },
   {
@@ -43,19 +43,25 @@ const acknowledgementGroups = [
 ];
 ---
 
-<BaseLayout title="Lukas Carvajal">
+<BaseLayout
+  title="Lukas Carvajal - Product Engineer"
+  description="Product engineer Lukas Carvajal builds and grows technology startups through product strategy, software, and AI."
+>
   <section class="opening full-bleed">
     <figure class="hero">
       <img
         src="/resources/images/lukas-working-with-mimo-team.jpg"
         alt="Lukas working with the Mimo team"
+        width="1600"
+        height="1200"
+        fetchpriority="high"
       />
       <figcaption>
           From left to right: Kevin, Lukas, Donatien, and Filip
       </figcaption>
     </figure>
     <div class="intro">
-        <h1>10 / 10</h1>
+        <h1>Building higher quality products in the age of AI</h1>
         <p>Hope you're fired up, ready to go</p>
     </div>
     <hr class="intro-divider" />
@@ -66,7 +72,7 @@ const acknowledgementGroups = [
   {startups.map(({ id, data }) => (
     <StickySection id={id}>
       {data.name === "Friends in Flats" || data.name === "Mimo" || data.name === "Tip Yourself" ? (
-        <div
+        <a
           class:list={[
             "portfolio-logo-background",
             {
@@ -76,20 +82,28 @@ const acknowledgementGroups = [
             },
           ]}
           slot="title"
+          href={`/startups/${id}/`}
+          aria-label={`View ${data.name}`}
         >
           <img
             class="portfolio-logo"
             src={data.logo}
             alt={`${data.name} logo`}
           />
-        </div>
+        </a>
       ) : (
-        <img
-          class="portfolio-logo"
+        <a
+          class="portfolio-logo-link"
           slot="title"
-          src={data.logo}
-          alt={`${data.name} logo`}
-        />
+          href={`/startups/${id}/`}
+          aria-label={`View ${data.name}`}
+        >
+          <img
+            class="portfolio-logo"
+            src={data.logo}
+            alt={`${data.name} logo`}
+          />
+        </a>
       )}
       <Project
         title={data.title}
@@ -100,7 +114,7 @@ const acknowledgementGroups = [
           .sort((a, b) => a.data.order - b.data.order)
           .map((project) => ({
             label: project.data.title,
-            href: `/startups/${id}/projects/${project.id.split("/").at(-1)}`,
+            href: `/startups/${id}/projects/${project.id.split("/").at(-1)}/`,
           }))}
         recommendation={data.recommendation}
       />
@@ -112,7 +126,7 @@ const acknowledgementGroups = [
     description="Generating €50,000 MRR for landlords, the public listing site is free to explore without creating an account."
     href="https://friends-in-flats.com"
     linkLabel="Open website"
-    image="/resources/images/friends-in-flats-home-page.png"
+    image="/resources/images/friends-in-flats-home-page.webp"
     imageAlt="Screen recording of the Friends in Flats apartment listings homepage"
     video="/resources/video/friends-in-flats-demo.mp4"
   />
@@ -227,6 +241,11 @@ const acknowledgementGroups = [
     width: 100%;
     height: var(--height-project-logo-background);
     padding: var(--space-8) var(--space-12);
+    text-decoration: none;
+  }
+
+  .portfolio-logo-link {
+    display: inline-block;
   }
 
   .portfolio-logo-background--mimo {
