@@ -6,7 +6,7 @@ description: A short biography of Lukas Carvajal.
 
 Lukas has been developing software for over eight years as Chief Technology Officer and Product Manager at three startups.
 
-He currently builds The Friends in Flats website, which generates €1,000,000 ARR for landlords.
+He currently builds The Friends in Flats website, which generates €84,000 in monthly bookings.
 
 His biggest accomplishments are
 

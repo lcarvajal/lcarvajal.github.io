@@ -6,7 +6,7 @@ summary: As CTO, I developed an online marketplace and rental management tools, 
 order: 1
 highlights:
   - label: Key metric
-    value: €50,000 MRR for landlords
+    value: €84,000 in monthly bookings
   - label: Position
     value: Chief Technology Officer
   - label: Company size
