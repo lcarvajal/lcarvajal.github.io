@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import CookiePreferences from "../components/CookiePreferences";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter.astro";
 
@@ -78,5 +79,6 @@ const jsonLd = JSON.stringify([...globalStructuredData, ...pageStructuredData])
     <SiteHeader client:load />
     <main><slot /></main>
     <SiteFooter />
+    <CookiePreferences analyticsEnabled={import.meta.env.PROD && !noindex} client:load />
   </body>
 </html>

@@ -1,0 +1,85 @@
+.cookie-preferences {
+  position: fixed;
+  right: var(--page-padding);
+  bottom: var(--page-padding);
+  z-index: 20;
+  box-sizing: border-box;
+  width: min(calc(100% - (2 * var(--page-padding))), var(--width-media));
+  padding: var(--space-6);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+.cookie-preferences__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: grid;
+  width: var(--space-8);
+  height: var(--space-8);
+  padding: 0;
+  border: 0;
+  color: var(--color-text);
+  background: transparent;
+  font: inherit;
+  font-size: var(--text-2xl);
+  line-height: 1;
+  place-items: center;
+  cursor: pointer;
+}
+
+.cookie-preferences__close:hover {
+  color: var(--color-accent);
+}
+
+.cookie-preferences__title {
+  margin: 0 var(--space-8) var(--space-3) 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  line-height: var(--leading-heading);
+}
+
+.cookie-preferences__description {
+  margin: 0;
+}
+
+.cookie-preferences__status {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.cookie-preferences__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.cookie-preferences__button {
+  min-height: var(--space-12);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  background: var(--color-background);
+  font: inherit;
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+}
+
+.cookie-preferences__button--primary {
+  color: var(--color-background);
+  background: var(--color-text);
+}
+
+.cookie-preferences__button:hover {
+  background: var(--color-accent);
+}
+
+@media (max-width: 30rem) {
+  .cookie-preferences__actions,
+  .cookie-preferences__button {
+    width: 100%;
+  }
+}

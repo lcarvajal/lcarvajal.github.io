@@ -1,6 +1,7 @@
 <footer class="site-footer full-bleed">
   <div class="site-footer__inner">
-      <a href="/components-preview">Components powering this website</a>
+    <a href="/components-preview">Components powering this website</a>
+    <button type="button" data-cookie-preferences>Cookie preferences</button>
   </div>
 </footer>
 
@@ -18,14 +19,26 @@
     padding-block: var(--space-16);
   }
 
-  .site-footer a {
+  .site-footer a,
+  .site-footer button {
     color: inherit;
+    background: transparent;
+    border: 0;
+    padding: 0;
     font-family: var(--font-body);
     font-size: var(--text-base);
     font-weight: var(--weight-normal);
+    text-decoration: underline;
+    cursor: pointer;
   }
 
-  .site-footer a:hover {
+  .site-footer a:hover,
+  .site-footer button:hover {
     text-decoration: none;
+  }
+
+  .site-footer button {
+    display: block;
+    margin-top: var(--space-3);
   }
 </style>
