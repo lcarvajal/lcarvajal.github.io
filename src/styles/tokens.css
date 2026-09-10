@@ -51,7 +51,8 @@
   --width-text: 60ch;
   --width-media: 32rem;
   --width-sidebar: 16rem;
-  --width-project-logo: 50%;
+  --width-project-logo: 10rem;
+  --width-project-logo-background: 18rem;
   --page-padding: 1rem;
   --height-header-expanded: 10.65rem;
   --height-header-compact: 4.5rem;

@@ -121,7 +121,8 @@ const breadcrumbSchema = {
 
   .startup-logo img {
     display: block;
-    width: min(var(--width-project-logo), var(--width-media));
+    width: 100%;
+    max-width: var(--width-project-logo);
     max-height: var(--space-16);
     object-fit: contain;
     object-position: center;

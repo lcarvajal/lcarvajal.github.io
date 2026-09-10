@@ -127,7 +127,7 @@ const acknowledgementGroups = [
   <CurrentProjectHighlight
     title={"Now building:\nFriends in Flats"}
     description="Generating €84,000 in monthly bookings, the public listing site is free to explore without creating an account."
-    href="https://friends-in-flats.com"
+    href="https://friends-in-flats.com?utm_source=lukascarvajal"
     linkLabel="Open website"
     image="/resources/images/friends-in-flats-home-page.webp"
     imageAlt="Screen recording of the Friends in Flats apartment listings homepage"
@@ -234,8 +234,8 @@ const acknowledgementGroups = [
 
   .portfolio-logo {
     display: block;
-    width: var(--width-project-logo);
-    max-width: 100%;
+    width: 100%;
+    max-width: var(--width-project-logo);
     height: auto;
     object-fit: contain;
     object-position: left center;
@@ -246,8 +246,9 @@ const acknowledgementGroups = [
     display: grid;
     place-items: center;
     width: 100%;
+    max-width: var(--width-project-logo-background);
     height: var(--height-project-logo-background);
-    padding: var(--space-8) var(--space-12);
+    padding: var(--space-4);
     text-decoration: none;
   }
 
@@ -272,7 +273,8 @@ const acknowledgementGroups = [
   }
 
   .portfolio-logo-background .portfolio-logo {
-    width: var(--width-project-logo);
+    width: 100%;
+    max-width: var(--width-project-logo);
     margin: auto;
     object-position: center;
   }
