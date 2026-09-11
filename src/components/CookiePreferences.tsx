@@ -57,8 +57,6 @@ export default function CookiePreferences({ analyticsEnabled }: Props) {
       if (savedConsent === "accepted" && analyticsEnabled) {
         void enableAnalytics();
       }
-    } else {
-      setOpen(true);
     }
 
     const openPreferences = (event: MouseEvent) => {

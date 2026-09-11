@@ -22,7 +22,9 @@ const { title, groups, note } = Astro.props;
         <section>
           <h3>{group.title}</h3>
           <ul>
-            {group.names.map((name) => <li>{name}</li>)}
+            {group.names.map((name) => (
+              <li>{name}</li>
+            ))}
           </ul>
         </section>
       ))}
@@ -78,7 +80,7 @@ const { title, groups, note } = Astro.props;
   .acknowledgements__note {
     max-width: var(--width-text);
     margin: var(--space-16) 0 0;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     white-space: pre-line;
   }
 
