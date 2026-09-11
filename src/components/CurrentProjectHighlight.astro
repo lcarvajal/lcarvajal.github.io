@@ -87,7 +87,7 @@ const { title, description, href, linkLabel, image, imageAlt, video } = Astro.pr
     display: block;
     box-sizing: border-box;
     width: 100%;
-    max-width: var(--width-media);
+    max-width: min(100%, var(--width-text));
     height: auto;
     justify-self: end;
     border: 1px solid var(--color-border);
@@ -97,7 +97,7 @@ const { title, description, href, linkLabel, image, imageAlt, video } = Astro.pr
     justify-self: start;
   }
 
-  @media (max-width: 48rem) {
+  @media (max-width: 56rem) {
     .current-project__inner {
       grid-template-columns: 1fr;
       gap: var(--space-8);

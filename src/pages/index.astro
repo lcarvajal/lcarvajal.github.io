@@ -235,7 +235,7 @@ const acknowledgementGroups = [
   .portfolio-logo {
     display: block;
     width: 100%;
-    max-width: var(--width-project-logo);
+    max-width: min(100%, var(--width-project-logo));
     height: auto;
     object-fit: contain;
     object-position: left center;
@@ -246,14 +246,21 @@ const acknowledgementGroups = [
     display: grid;
     place-items: center;
     width: 100%;
-    max-width: var(--width-project-logo-background);
+    max-width: min(100%, var(--width-project-logo-background));
     height: var(--height-project-logo-background);
     padding: var(--space-4);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--weight-normal);
     text-decoration: none;
   }
 
   .portfolio-logo-link {
     display: inline-block;
+    max-width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--weight-normal);
   }
 
   .portfolio-logo-background--mimo {
@@ -282,7 +289,7 @@ const acknowledgementGroups = [
   @media (max-width: 56rem) {
     .portfolio-logo-background,
     .portfolio-logo-link {
-      max-width: var(--width-media);
+      max-width: min(100%, var(--width-text));
     }
   }
 
