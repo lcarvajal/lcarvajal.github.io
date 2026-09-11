@@ -60,9 +60,9 @@
 
 .site-header__menu-button {
   display: none;
-  width: var(--space-8);
-  height: var(--space-8);
-  padding: var(--space-2);
+  width: var(--space-12);
+  height: var(--space-12);
+  padding: 0;
   border: 0;
   color: var(--color-text);
   background: transparent;
@@ -71,6 +71,8 @@
 
 .site-header__menu-button span {
   display: block;
+  width: var(--space-8);
+  margin-left: auto;
   height: 2px;
   background: currentColor;
 }
