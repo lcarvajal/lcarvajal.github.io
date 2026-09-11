@@ -2,31 +2,69 @@ import { expect, test } from "@playwright/test";
 
 const renderingTolerance = 1;
 
-test("keeps paragraphs within the text content width", async ({ page }) => {
-  await page.goto("/");
+test("keeps paragraphs and headings within the text content width", async ({
+  baseURL,
+  page,
+}) => {
+  const origin = new URL(baseURL!).origin;
+  const pendingPaths = ["/"];
+  const visitedPaths = new Set<string>();
 
-  const paragraphs = page.locator("p:visible");
+  while (pendingPaths.length > 0) {
+    const path = pendingPaths.shift()!;
 
-  for (let index = 0; index < (await paragraphs.count()); index += 1) {
-    const paragraph = paragraphs.nth(index);
-    const box = await paragraph.boundingBox();
-    const textContentWidth = await paragraph.evaluate((element) => {
-      const probe = document.createElement("div");
-      probe.style.position = "fixed";
-      probe.style.visibility = "hidden";
-      probe.style.font = getComputedStyle(element).font;
-      probe.style.width = "var(--width-text)";
-      element.parentElement!.append(probe);
+    if (visitedPaths.has(path)) continue;
+    visitedPaths.add(path);
 
-      const width = probe.getBoundingClientRect().width;
-      probe.remove();
+    await page.goto(path);
 
-      return width;
-    });
-
-    expect(box).not.toBeNull();
-    expect(box!.width, `paragraph ${index + 1}`).toBeLessThanOrEqual(
-      textContentWidth + renderingTolerance,
+    const textElements = page.locator(
+      "p:visible, h1:visible, h2:visible, h3:visible, h4:visible, h5:visible, h6:visible",
     );
+
+    for (let index = 0; index < (await textElements.count()); index += 1) {
+      const textElement = textElements.nth(index);
+      const box = await textElement.boundingBox();
+      const textContentWidth = await textElement.evaluate((element) => {
+        const probe = document.createElement("div");
+        probe.style.position = "fixed";
+        probe.style.visibility = "hidden";
+        probe.style.font = getComputedStyle(element).font;
+        probe.style.width = "var(--width-text)";
+        element.parentElement!.append(probe);
+
+        const width = probe.getBoundingClientRect().width;
+        probe.remove();
+
+        return width;
+      });
+
+      const tagName = await textElement.evaluate((element) =>
+        element.tagName.toLowerCase(),
+      );
+
+      expect(box, `${tagName} ${index + 1} on ${path}`).not.toBeNull();
+      expect(
+        box!.width,
+        `${tagName} ${index + 1} on ${path}`,
+      ).toBeLessThanOrEqual(textContentWidth + renderingTolerance);
+    }
+
+    const internalPaths = await page.locator("a[href]").evaluateAll(
+      (links, currentOrigin) =>
+        links
+          .map((link) => new URL((link as HTMLAnchorElement).href))
+          .filter(
+            (url) =>
+              url.origin === currentOrigin &&
+              !url.pathname.startsWith("/haha-panda/"),
+          )
+          .map((url) => url.pathname),
+      origin,
+    );
+
+    for (const internalPath of internalPaths) {
+      if (!visitedPaths.has(internalPath)) pendingPaths.push(internalPath);
+    }
   }
 });

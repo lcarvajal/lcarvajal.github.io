@@ -24,8 +24,13 @@ h3,
 h4,
 h5,
 h6 {
+  max-width: var(--width-text);
   font-family: var(--font-heading);
   font-weight: var(--weight-heading);
+}
+
+p {
+  max-width: var(--width-text);
 }
 
 :focus-visible {
@@ -41,10 +46,7 @@ main {
 
 main > * {
   align-self: flex-start;
-  width: min(
-    calc(100% - (2 * var(--page-padding))),
-    var(--width-content)
-  );
+  width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
   margin-left: max(
     var(--page-padding),
     calc((100% - var(--width-content)) / 2)

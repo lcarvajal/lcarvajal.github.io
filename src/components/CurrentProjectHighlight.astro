@@ -11,7 +11,8 @@ interface Props {
   video?: string;
 }
 
-const { title, description, href, linkLabel, image, imageAlt, video } = Astro.props;
+const { title, description, href, linkLabel, image, imageAlt, video } =
+  Astro.props;
 ---
 
 <section class="current-project full-bleed">
@@ -23,19 +24,35 @@ const { title, description, href, linkLabel, image, imageAlt, video } = Astro.pr
     </div>
 
     {video ? (
-      <video autoplay muted loop playsinline poster={image} aria-label={imageAlt} data-playback-rate="1.25">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={image}
+        aria-label={imageAlt}
+        data-playback-rate="1.25"
+      >
         <source src={video} type="video/mp4" />
       </video>
     ) : (
-      <img src={image} alt={imageAlt} width="1920" height="1080" loading="lazy" />
+      <img
+        src={image}
+        alt={imageAlt}
+        width="1920"
+        height="1080"
+        loading="lazy"
+      />
     )}
   </div>
 </section>
 
 <script>
-  document.querySelectorAll<HTMLVideoElement>("[data-playback-rate]").forEach((video) => {
-    video.playbackRate = Number(video.dataset.playbackRate);
-  });
+  document
+    .querySelectorAll<HTMLVideoElement>("[data-playback-rate]")
+    .forEach((video) => {
+      video.playbackRate = Number(video.dataset.playbackRate);
+    });
 </script>
 
 <style>
@@ -78,7 +95,6 @@ const { title, description, href, linkLabel, image, imageAlt, video } = Astro.pr
   }
 
   p {
-    max-width: var(--width-text);
     font-size: var(--text-lg);
   }
 
