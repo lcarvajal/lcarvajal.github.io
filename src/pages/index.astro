@@ -49,8 +49,9 @@ const acknowledgementGroups = [
   description="Lukas Carvajal co-founded Tip Yourself (aquired), ran a crucial part of the learning experience at Mimo, and now works on Friends in Flats, generating €80K+ in monthly bookings."
 >
   <section class="opening full-bleed">
-    <figure class="hero">
+    <figure class="hero" data-testid="opening-hero">
       <img
+        data-testid="opening-image"
         src="/resources/images/lukas-working-with-mimo-team.jpg"
         alt="Lukas working with the Mimo team"
         width="1600"
@@ -62,15 +63,15 @@ const acknowledgementGroups = [
       </figcaption>
     </figure>
     <div class="intro">
-        <h1>Launching startups since 2014</h1>
+        <h1 data-testid="opening-title">Launching startups since 2014</h1>
       <div class="intro-copy">
-        <p>After launching Tip Yourself (aquired) and developing Mimo's core learning experience, I'm building Friends in Flats - a rental marketplace generating €80K+ in monthly bookings.</p>
+        <p data-testid="opening-subtitle">After launching Tip Yourself (aquired) and developing Mimo's core learning experience, I'm building Friends in Flats - a rental marketplace generating €80K+ in monthly bookings.</p>
       </div>
     </div>
-    <hr class="intro-divider" />
+    <hr class="intro-divider" data-testid="opening-divider" />
   </section>
 
-  <h2 class="portfolio-heading">Portfolio</h2>
+  <h2 class="portfolio-heading" data-testid="portfolio-heading">Portfolio</h2>
 
   {startups.map(({ id, data }) => (
     <StickySection id={id}>
