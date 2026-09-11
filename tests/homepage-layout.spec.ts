@@ -1,6 +1,7 @@
 import { expect, test, type Locator } from "@playwright/test";
 
 const edgeTolerance = 1;
+const shortViewportMaxHeight = 640;
 const viewportTolerance = 4;
 
 async function expectInViewport(element: Locator) {
@@ -55,28 +56,38 @@ test("keeps the opening elements from overlapping", async ({ page }) => {
   const divider = page.getByTestId("opening-divider");
   const portfolioHeading = page.getByTestId("portfolio-heading");
 
-  await expectStackedWithoutOverlap(hero, title);
+  if (await hero.isVisible()) {
+    await expectStackedWithoutOverlap(hero, title);
+  }
   await expectStackedWithoutOverlap(title, subtitle);
   await expectStackedWithoutOverlap(subtitle, divider);
   await expectStackedWithoutOverlap(divider, portfolioHeading);
 });
 
-test("makes the hero image and divider full viewport width", async ({
-  page,
-}) => {
+test("sizes the hero image and divider for the viewport", async ({ page }) => {
   const image = page.getByTestId("opening-image");
   const divider = page.getByTestId("opening-divider");
   const viewport = page.viewportSize();
 
   expect(viewport).not.toBeNull();
 
-  for (const element of [image, divider]) {
-    const box = await element.boundingBox();
+  if (viewport!.height <= shortViewportMaxHeight) {
+    await expect(image).toBeHidden();
+  } else {
+    const imageBox = await image.boundingBox();
 
-    expect(box).not.toBeNull();
-    expect(Math.abs(box!.x)).toBeLessThanOrEqual(edgeTolerance);
-    expect(Math.abs(box!.x + box!.width - viewport!.width)).toBeLessThanOrEqual(
-      edgeTolerance,
-    );
+    expect(imageBox).not.toBeNull();
+    expect(Math.abs(imageBox!.x)).toBeLessThanOrEqual(edgeTolerance);
+    expect(
+      Math.abs(imageBox!.x + imageBox!.width - viewport!.width),
+    ).toBeLessThanOrEqual(edgeTolerance);
   }
+
+  const dividerBox = await divider.boundingBox();
+
+  expect(dividerBox).not.toBeNull();
+  expect(Math.abs(dividerBox!.x)).toBeLessThanOrEqual(edgeTolerance);
+  expect(
+    Math.abs(dividerBox!.x + dividerBox!.width - viewport!.width),
+  ).toBeLessThanOrEqual(edgeTolerance);
 });

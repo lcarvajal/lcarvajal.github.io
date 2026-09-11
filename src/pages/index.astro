@@ -6,14 +6,19 @@ import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
 import { getCollection } from "astro:content";
 
-const startups = (await getCollection("startups"))
-  .sort((a, b) => a.data.order - b.data.order);
+const startups = (await getCollection("startups")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 const keyProjects = await getCollection("keyProjects");
 
 const acknowledgementGroups = [
   {
     title: "Shaped me",
-    names: ["Milton & Karoline Carvajal", "Dr Anthony Krupp", "Luis Carlos Perea"],
+    names: [
+      "Milton & Karoline Carvajal",
+      "Dr Anthony Krupp",
+      "Luis Carlos Perea",
+    ],
   },
   {
     title: "Bet on me",
@@ -29,8 +34,8 @@ const acknowledgementGroups = [
   {
     title: "Built things with me",
     names: [
-    "Samat Kadyrov",
-    "Eric Strohmaier",
+      "Samat Kadyrov",
+      "Eric Strohmaier",
       "Lori Porumb",
       "Radu Meister",
       "Joseph O’Brien",
@@ -59,30 +64,40 @@ const acknowledgementGroups = [
         fetchpriority="high"
       />
       <figcaption>
-          From left to right: Kevin, Lukas, Donatien, and Filip
+        From left to right: Kevin, Lukas, Donatien, and Filip
       </figcaption>
     </figure>
     <div class="intro">
-        <h1 data-testid="opening-title">Launching startups since 2014</h1>
+      <h1 data-testid="opening-title">Launching startups since 2014</h1>
       <div class="intro-copy">
-        <p data-testid="opening-subtitle">After launching Tip Yourself (aquired) and developing Mimo's core learning experience, I'm building Friends in Flats - a rental marketplace generating €80K+ in monthly bookings.</p>
+        <p data-testid="opening-subtitle">
+          After launching Tip Yourself (aquired) and improving Mimo, I'm
+          building Friends in Flats - a rental marketplace with €80K+ in monthly
+          bookings.
+        </p>
       </div>
     </div>
     <hr class="intro-divider" data-testid="opening-divider" />
   </section>
 
-  <h2 class="portfolio-heading" data-testid="portfolio-heading">Portfolio</h2>
+  <h2 class="portfolio-heading" data-testid="portfolio-heading">
+    Portfolio
+  </h2>
 
   {startups.map(({ id, data }) => (
     <StickySection id={id}>
-      {data.name === "Friends in Flats" || data.name === "Mimo" || data.name === "Tip Yourself" ? (
+      {data.name === "Friends in Flats" ||
+      data.name === "Mimo" ||
+      data.name === "Tip Yourself" ? (
         <a
           class:list={[
             "portfolio-logo-background",
             {
               "portfolio-logo-background--mimo": data.name === "Mimo",
-              "portfolio-logo-background--tip-yourself": data.name === "Tip Yourself",
-              "portfolio-logo-background--friends-in-flats": data.name === "Friends in Flats",
+              "portfolio-logo-background--tip-yourself":
+                data.name === "Tip Yourself",
+              "portfolio-logo-background--friends-in-flats":
+                data.name === "Friends in Flats",
             },
           ]}
           slot="title"
@@ -138,7 +153,9 @@ const acknowledgementGroups = [
   <Acknowledgements
     title="A special thanks to the people that"
     groups={acknowledgementGroups}
-    note={"You make life a lot of fun and taught me loads over the years.\nEverything on this site happened because of you."}
+    note={
+      "You make life a lot of fun and taught me loads over the years.\nEverything on this site happened because of you."
+    }
   />
 </BaseLayout>
 
@@ -195,10 +212,7 @@ const acknowledgementGroups = [
   }
 
   .intro {
-    width: min(
-      calc(100% - (2 * var(--page-padding))),
-      var(--width-content)
-    );
+    width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
     margin-inline: auto;
     padding-top: var(--space-8);
   }
@@ -297,8 +311,19 @@ const acknowledgementGroups = [
   @media (max-width: 48rem) {
     .opening {
       height: calc(
-        100svh - var(--height-header-compact) - var(--space-16) - var(--space-12)
+        100svh - var(--height-header-compact) - var(--space-16) -
+          var(--space-12)
       );
+    }
+  }
+
+  @media (max-height: 40rem) {
+    .opening {
+      grid-template-rows: 1fr auto;
+    }
+
+    .hero {
+      display: none;
     }
   }
 </style>
