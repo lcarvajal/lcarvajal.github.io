@@ -8,6 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "playwright:install": "playwright install chromium webkit",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
@@ -27,6 +29,8 @@
     "@playwright/test": "^1.63.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^1.0.0",
     "typescript": "latest"
   }
 }
