@@ -3,8 +3,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const components = [
   { name: "Acknowledgements", href: "/components-preview/acknowledgements" },
-  { name: "Current Project Highlight", href: "/components-preview/current-project-highlight" },
+  {
+    name: "Current Project Highlight",
+    href: "/components-preview/current-project-highlight",
+  },
   { name: "External Link", href: "/components-preview/external-link" },
+  { name: "Logo Marquee", href: "/components-preview/logo-marquee" },
   { name: "Project", href: "/components-preview/project" },
   { name: "Site Footer", href: "/components-preview/site-footer" },
   { name: "Site Header", href: "/components-preview/site-header" },
@@ -12,11 +16,16 @@ const components = [
 ];
 ---
 
-<BaseLayout title="Components · Lukas Carvajal" description="A living gallery of components created for this website.">
+<BaseLayout
+  title="Components · Lukas Carvajal"
+  description="A living gallery of components created for this website."
+>
   <h1>Components</h1>
   <ul>
     {components.map((component) => (
-      <li><a href={component.href}>{component.name}</a></li>
+      <li>
+        <a href={component.href}>{component.name}</a>
+      </li>
     ))}
   </ul>
 </BaseLayout>

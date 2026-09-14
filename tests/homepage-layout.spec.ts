@@ -37,36 +37,27 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
 });
 
-test("shows the title, subtitle, and portfolio heading initially", async ({
-  page,
-}) => {
+test("shows the title and portfolio heading initially", async ({ page }) => {
   const title = page.getByTestId("opening-title");
-  const subtitle = page.getByTestId("opening-subtitle");
   const portfolioHeading = page.getByTestId("portfolio-heading");
 
   await expectInViewport(title);
-  await expectInViewport(subtitle);
   await expectInViewport(portfolioHeading);
 });
 
 test("keeps the opening elements from overlapping", async ({ page }) => {
   const hero = page.getByTestId("opening-hero");
   const title = page.getByTestId("opening-title");
-  const subtitle = page.getByTestId("opening-subtitle");
-  const divider = page.getByTestId("opening-divider");
   const portfolioHeading = page.getByTestId("portfolio-heading");
 
   if (await hero.isVisible()) {
     await expectStackedWithoutOverlap(hero, title);
   }
-  await expectStackedWithoutOverlap(title, subtitle);
-  await expectStackedWithoutOverlap(subtitle, divider);
-  await expectStackedWithoutOverlap(divider, portfolioHeading);
+  await expectStackedWithoutOverlap(title, portfolioHeading);
 });
 
-test("sizes the hero image and divider for the viewport", async ({ page }) => {
+test("sizes the hero image for the viewport", async ({ page }) => {
   const image = page.getByTestId("opening-image");
-  const divider = page.getByTestId("opening-divider");
   const viewport = page.viewportSize();
 
   expect(viewport).not.toBeNull();
@@ -82,12 +73,4 @@ test("sizes the hero image and divider for the viewport", async ({ page }) => {
       Math.abs(imageBox!.x + imageBox!.width - viewport!.width),
     ).toBeLessThanOrEqual(edgeTolerance);
   }
-
-  const dividerBox = await divider.boundingBox();
-
-  expect(dividerBox).not.toBeNull();
-  expect(Math.abs(dividerBox!.x)).toBeLessThanOrEqual(edgeTolerance);
-  expect(
-    Math.abs(dividerBox!.x + dividerBox!.width - viewport!.width),
-  ).toBeLessThanOrEqual(edgeTolerance);
 });

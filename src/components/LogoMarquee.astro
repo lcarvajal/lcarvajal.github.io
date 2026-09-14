@@ -1,0 +1,128 @@
+---
+interface Logo {
+  badge: string;
+  href: string;
+  name: string;
+  src: string;
+}
+
+interface Props {
+  logos: Logo[];
+}
+
+const { logos } = Astro.props;
+---
+
+<div class="logo-marquee" data-testid="opening-marquee">
+  <div class="logo-marquee__track" data-marquee-track>
+    <div class="logo-marquee__group">
+      {logos.map((logo) => (
+        <a href={logo.href} aria-label={`View ${logo.name}: ${logo.badge}`}>
+          <img src={logo.src} alt={`${logo.name} logo`} />
+          <span>{logo.badge}</span>
+        </a>
+      ))}
+    </div>
+    <div class="logo-marquee__group" aria-hidden="true">
+      {logos.map((logo) => (
+        <a href={logo.href} tabindex="-1">
+          <img src={logo.src} alt="" />
+          <span>{logo.badge}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const pixelsPerSecond = 100;
+
+  document
+    .querySelectorAll<HTMLElement>("[data-marquee-track]")
+    .forEach((track) => {
+      const group = track.firstElementChild;
+
+      if (!(group instanceof HTMLElement)) return;
+
+      const setDuration = () => {
+        const duration = group.getBoundingClientRect().width / pixelsPerSecond;
+        track.style.setProperty("--marquee-duration", `${duration}s`);
+      };
+
+      setDuration();
+      new ResizeObserver(setDuration).observe(group);
+    });
+</script>
+
+<style>
+  .logo-marquee {
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-text);
+  }
+
+  .logo-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee var(--marquee-duration, 10s) linear infinite;
+  }
+
+  .logo-marquee__group {
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100vw;
+    gap: var(--space-16);
+    padding: var(--space-6) var(--space-8);
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-background);
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    width: auto;
+    height: var(--space-8);
+    min-height: var(--space-8);
+    max-height: var(--space-8);
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  span {
+    font-size: var(--text-xs);
+    line-height: var(--leading-body);
+    white-space: nowrap;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (min-width: 48.001rem) {
+    .logo-marquee__track {
+      width: 100%;
+      animation: none;
+    }
+
+    .logo-marquee__group[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee__track {
+      animation-play-state: paused;
+    }
+  }
+</style>

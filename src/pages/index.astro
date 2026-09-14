@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Acknowledgements from "../components/Acknowledgements.astro";
 import CurrentProjectHighlight from "../components/CurrentProjectHighlight.astro";
+import LogoMarquee from "../components/LogoMarquee.astro";
 import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
 import { getCollection } from "astro:content";
@@ -10,6 +11,17 @@ const startups = (await getCollection("startups")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 const keyProjects = await getCollection("keyProjects");
+const startupBadges = {
+  "Friends in Flats": "€84K monthly bookings",
+  Mimo: "€800K MRR",
+  "Tip Yourself": "aquired",
+};
+const startupLogos = startups.map(({ id, data }) => ({
+  badge: startupBadges[data.name as keyof typeof startupBadges],
+  href: `/startups/${id}/`,
+  name: data.name,
+  src: data.logo,
+}));
 
 const acknowledgementGroups = [
   {
@@ -68,21 +80,14 @@ const acknowledgementGroups = [
       </figcaption>
     </figure>
     <div class="intro">
-      <h1 data-testid="opening-title">Launching startups since 2014</h1>
-      <div class="intro-copy">
-        <p data-testid="opening-subtitle">
-          After launching Tip Yourself (aquired) and improving Mimo, I'm
-          building Friends in Flats - a rental marketplace with €80K+ in monthly
-          bookings.
-        </p>
-      </div>
+      <p data-testid="opening-title">Building startups since 2014</p>
     </div>
-    <hr class="intro-divider" data-testid="opening-divider" />
+    <LogoMarquee logos={startupLogos} />
   </section>
 
-  <h2 class="portfolio-heading" data-testid="portfolio-heading">
+  <h1 class="portfolio-heading" data-testid="portfolio-heading">
     Portfolio
-  </h2>
+  </h1>
 
   {startups.map(({ id, data }) => (
     <StickySection id={id}>
@@ -164,7 +169,7 @@ const acknowledgementGroups = [
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto auto;
     height: calc(
-      100svh - var(--height-header-expanded) - var(--space-16) - var(--space-12)
+      100svh - var(--height-header-compact) - var(--space-16) - var(--space-12)
     );
   }
 
@@ -212,30 +217,22 @@ const acknowledgementGroups = [
   }
 
   .intro {
-    width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
-    margin-inline: auto;
-    padding-top: var(--space-8);
-  }
-
-  .intro-copy {
-    width: min(100%, var(--width-text));
-  }
-
-  .intro h1 {
-    margin-block: 0 var(--space-3);
-    font-size: var(--text-4xl);
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--space-8) var(--page-padding);
+    border-bottom: 1px solid var(--color-background);
+    color: var(--color-background);
+    background: var(--color-text);
+    text-align: center;
   }
 
   .intro p {
-    margin: 0;
-  }
-
-  .intro-divider {
-    width: 100%;
-    margin-block: var(--space-8) 0;
-    margin-inline: 0;
-    border: 0;
-    border-top: 1px solid var(--color-text);
+    margin-block: 0;
+    margin-inline: auto;
+    font-family: var(--font-body);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-normal);
+    line-height: var(--leading-heading);
   }
 
   .portfolio-heading {
@@ -305,15 +302,6 @@ const acknowledgementGroups = [
     .portfolio-logo-background,
     .portfolio-logo-link {
       max-width: min(100%, var(--width-text));
-    }
-  }
-
-  @media (max-width: 48rem) {
-    .opening {
-      height: calc(
-        100svh - var(--height-header-compact) - var(--space-16) -
-          var(--space-12)
-      );
     }
   }
 
