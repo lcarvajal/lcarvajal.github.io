@@ -26,33 +26,33 @@ const startupLogos = startups.map(({ id, data }) => ({
 const personalPhotos = [
   {
     alt: "Friends in Flats team members in London",
-    filename: "fif-in-london.jpeg",
+    filename: "Attending YC event in London",
     src: "/resources/images/fif-in-london.jpeg",
   },
   {
     alt: "The Mimo team at a retreat",
-    filename: "mimo-retreat.jpg",
+    filename: "Mimo team retreat in The Alps",
     src: "/resources/images/mimo-retreat.jpg",
   },
   {
-    alt: "Friends from the Mimo team together",
+    alt: "Mimo gang celebrating",
     filename: "mimo-friends.JPG",
     src: "/resources/images/mimo-friends.JPG",
   },
   {
-    alt: "Lukas coding while wearing a cycling helmet",
+    alt: "Trying to not take everyting too seriously",
     filename: "lukas-coding-with-helmet.jpg",
     src: "/resources/images/lukas-coding-with-helmet.jpg",
   },
   {
-    alt: "The Mimo team having dinner",
-    filename: "mimo-dinner.jpg",
-    src: "/resources/images/mimo-dinner.jpg",
+    alt: "Friends in Flats team members on a cycling retreat",
+    filename: "Fif team retreat in Salzkammergut",
+    src: "/resources/images/fif-retreat.jpeg",
   },
   {
-    alt: "Friends in Flats team members on a cycling retreat",
-    filename: "fif-retreat.jpeg",
-    src: "/resources/images/fif-retreat.jpeg",
+    alt: "The Mimo team having dinner",
+    filename: "A classic Samat selfie",
+    src: "/resources/images/mimo-dinner.jpg",
   },
 ];
 
@@ -121,7 +121,7 @@ const acknowledgementGroups = [
   <PhotoCarousel photos={personalPhotos} />
 
   <h2 class="portfolio-heading" data-testid="portfolio-heading">
-    Portfolio
+    Startup portfolio
   </h2>
 
   {startups.map(({ id, data }) => (
