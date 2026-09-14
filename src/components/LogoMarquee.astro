@@ -35,7 +35,7 @@ const { logos } = Astro.props;
 </div>
 
 <script>
-  const pixelsPerSecond = 100;
+  const pixelsPerSecond = 60;
 
   document
     .querySelectorAll<HTMLElement>("[data-marquee-track]")
@@ -56,8 +56,10 @@ const { logos } = Astro.props;
 
 <style>
   .logo-marquee {
+    box-sizing: border-box;
     width: 100%;
     overflow: hidden;
+    border-bottom: 1px solid var(--color-background);
     background: var(--color-text);
   }
 
@@ -90,15 +92,15 @@ const { logos } = Astro.props;
   img {
     display: block;
     width: auto;
-    height: var(--space-8);
-    min-height: var(--space-8);
-    max-height: var(--space-8);
+    height: var(--height-marquee-logo);
+    min-height: var(--height-marquee-logo);
+    max-height: var(--height-marquee-logo);
     object-fit: contain;
     filter: brightness(0) invert(1);
   }
 
   span {
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     line-height: var(--leading-body);
     white-space: nowrap;
   }
@@ -111,8 +113,16 @@ const { logos } = Astro.props;
 
   @media (min-width: 48.001rem) {
     .logo-marquee__track {
-      width: 100%;
+      width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
+      margin-inline: auto;
       animation: none;
+    }
+
+    .logo-marquee__group {
+      justify-content: space-between;
+      width: 100%;
+      min-width: 0;
+      padding-inline: 0;
     }
 
     .logo-marquee__group[aria-hidden="true"] {

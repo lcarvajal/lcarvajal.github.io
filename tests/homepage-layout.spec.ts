@@ -37,23 +37,19 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
 });
 
-test("shows the title and portfolio heading initially", async ({ page }) => {
+test("shows the title initially", async ({ page }) => {
   const title = page.getByTestId("opening-title");
-  const portfolioHeading = page.getByTestId("portfolio-heading");
 
   await expectInViewport(title);
-  await expectInViewport(portfolioHeading);
 });
 
 test("keeps the opening elements from overlapping", async ({ page }) => {
   const hero = page.getByTestId("opening-hero");
   const title = page.getByTestId("opening-title");
-  const portfolioHeading = page.getByTestId("portfolio-heading");
 
   if (await hero.isVisible()) {
     await expectStackedWithoutOverlap(hero, title);
   }
-  await expectStackedWithoutOverlap(title, portfolioHeading);
 });
 
 test("sizes the hero image for the viewport", async ({ page }) => {

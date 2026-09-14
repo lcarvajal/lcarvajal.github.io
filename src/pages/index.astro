@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Acknowledgements from "../components/Acknowledgements.astro";
 import CurrentProjectHighlight from "../components/CurrentProjectHighlight.astro";
 import LogoMarquee from "../components/LogoMarquee.astro";
+import PhotoCarousel from "../components/PhotoCarousel.astro";
 import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
 import { getCollection } from "astro:content";
@@ -22,6 +23,38 @@ const startupLogos = startups.map(({ id, data }) => ({
   name: data.name,
   src: data.logo,
 }));
+const personalPhotos = [
+  {
+    alt: "Friends in Flats team members in London",
+    filename: "fif-in-london.jpeg",
+    src: "/resources/images/fif-in-london.jpeg",
+  },
+  {
+    alt: "The Mimo team at a retreat",
+    filename: "mimo-retreat.jpg",
+    src: "/resources/images/mimo-retreat.jpg",
+  },
+  {
+    alt: "Friends from the Mimo team together",
+    filename: "mimo-friends.JPG",
+    src: "/resources/images/mimo-friends.JPG",
+  },
+  {
+    alt: "Lukas coding while wearing a cycling helmet",
+    filename: "lukas-coding-with-helmet.jpg",
+    src: "/resources/images/lukas-coding-with-helmet.jpg",
+  },
+  {
+    alt: "The Mimo team having dinner",
+    filename: "mimo-dinner.jpg",
+    src: "/resources/images/mimo-dinner.jpg",
+  },
+  {
+    alt: "Friends in Flats team members on a cycling retreat",
+    filename: "fif-retreat.jpeg",
+    src: "/resources/images/fif-retreat.jpeg",
+  },
+];
 
 const acknowledgementGroups = [
   {
@@ -80,14 +113,16 @@ const acknowledgementGroups = [
       </figcaption>
     </figure>
     <div class="intro">
-      <p data-testid="opening-title">Building startups since 2014</p>
+      <h1 data-testid="opening-title">Building startups since 2014</h1>
     </div>
     <LogoMarquee logos={startupLogos} />
   </section>
 
-  <h1 class="portfolio-heading" data-testid="portfolio-heading">
+  <PhotoCarousel photos={personalPhotos} />
+
+  <h2 class="portfolio-heading" data-testid="portfolio-heading">
     Portfolio
-  </h1>
+  </h2>
 
   {startups.map(({ id, data }) => (
     <StickySection id={id}>
@@ -226,13 +261,14 @@ const acknowledgementGroups = [
     text-align: center;
   }
 
-  .intro p {
+  .intro h1 {
     margin-block: 0;
     margin-inline: auto;
-    font-family: var(--font-body);
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-normal);
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-heading);
     line-height: var(--leading-heading);
+    text-align: center;
   }
 
   .portfolio-heading {

@@ -1,0 +1,22 @@
+---
+import PhotoCarousel from "../../../components/PhotoCarousel.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const photos = [
+  {
+    alt: "Friends from the Mimo team together",
+    filename: "mimo-friends.JPG",
+    src: "/resources/images/mimo-friends.JPG",
+  },
+  {
+    alt: "Friends in Flats team members in London",
+    filename: "fif-in-london.jpeg",
+    src: "/resources/images/fif-in-london.jpeg",
+  },
+];
+---
+
+<BaseLayout title="Photo Carousel · Components · Lukas Carvajal">
+  <h1>Photo Carousel</h1>
+  <PhotoCarousel {photos} />
+</BaseLayout>

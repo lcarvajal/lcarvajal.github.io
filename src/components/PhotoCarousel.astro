@@ -1,0 +1,149 @@
+---
+interface Photo {
+  alt: string;
+  filename: string;
+  src: string;
+}
+
+interface Props {
+  photos: Photo[];
+}
+
+const { photos } = Astro.props;
+---
+
+<section
+  class="photo-carousel full-bleed"
+  aria-label="Personal photos"
+  data-photo-carousel
+>
+  <div class="photo-carousel__track" data-carousel-track tabindex="0">
+    {photos.map((photo) => (
+      <figure>
+        <img src={photo.src} alt={photo.alt} loading="lazy" />
+        <figcaption>{photo.filename}</figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <div class="photo-carousel__controls">
+    <button type="button" aria-label="Previous photos" data-carousel-previous>
+      <span aria-hidden="true">←</span>
+    </button>
+    <button type="button" aria-label="Next photos" data-carousel-next>
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
+</section>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-photo-carousel]")
+    .forEach((carousel) => {
+      const track = carousel.querySelector<HTMLElement>(
+        "[data-carousel-track]",
+      );
+      const previous = carousel.querySelector<HTMLButtonElement>(
+        "[data-carousel-previous]",
+      );
+      const next = carousel.querySelector<HTMLButtonElement>(
+        "[data-carousel-next]",
+      );
+
+      const scroll = (direction: -1 | 1) => {
+        track?.scrollBy({
+          behavior: "smooth",
+          left: direction * track.clientWidth * 0.8,
+        });
+      };
+
+      previous?.addEventListener("click", () => scroll(-1));
+      next?.addEventListener("click", () => scroll(1));
+    });
+</script>
+
+<style>
+  .photo-carousel {
+    overflow: hidden;
+    color: var(--color-background);
+    background: var(--color-text);
+  }
+
+  .photo-carousel__controls {
+    display: flex;
+    justify-content: flex-end;
+    width: min(calc(100% - (2 * var(--page-padding))), var(--width-content));
+    margin-inline: auto;
+    padding-bottom: var(--space-12);
+  }
+
+  button {
+    display: grid;
+    width: var(--space-12);
+    height: var(--space-12);
+    padding: 0;
+    border: 1px solid var(--color-background);
+    color: var(--color-text);
+    background: var(--color-background);
+    font-size: var(--text-xl);
+    place-items: center;
+    cursor: pointer;
+  }
+
+  button + button {
+    border-left: 1px solid var(--color-text);
+  }
+
+  .photo-carousel__track {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
+    overflow-x: auto;
+    padding-right: max(
+      var(--page-padding),
+      calc((100% - var(--width-content)) / 2)
+    );
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-8);
+    padding-left: 0;
+    scroll-behavior: smooth;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .photo-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  figure {
+    flex: 0 0 clamp(16rem, 30vw, 28rem);
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 36rem;
+    object-fit: cover;
+  }
+
+  figcaption {
+    margin-top: var(--space-3);
+    font-size: var(--text-lg);
+    line-height: var(--leading-heading);
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 48rem) {
+    .photo-carousel__track {
+      padding-block: var(--space-8) var(--space-12);
+    }
+
+    figure {
+      flex-basis: min(80vw, 24rem);
+    }
+  }
+</style>
