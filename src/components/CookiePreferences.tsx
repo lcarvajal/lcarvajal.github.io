@@ -114,8 +114,8 @@ export default function CookiePreferences({ analyticsEnabled }: Props) {
         id="cookie-preferences-description"
       >
         By sharing page views, button clicks, and a rough idea of your location
-        ~50+ km radius, I can create a better experience for people interested
-        in my work.
+        (a radius of 50 km or more), I can create a better experience for people
+        interested in my work.
       </p>
       {consent && (
         <p className="cookie-preferences__status">

@@ -15,7 +15,7 @@ const keyProjects = await getCollection("keyProjects");
 const startupBadges = {
   "Friends in Flats": "€84K monthly bookings",
   Mimo: "€800K MRR",
-  "Tip Yourself": "aquired by Earnin",
+  "Tip Yourself": "acquired by Earnin",
 };
 const startupLogos = startups.map(({ id, data }) => ({
   badge: startupBadges[data.name as keyof typeof startupBadges],
@@ -26,33 +26,33 @@ const startupLogos = startups.map(({ id, data }) => ({
 const personalPhotos = [
   {
     alt: "Friends in Flats team members in London",
-    filename: "Attending YC a event in London with Friends in Flats",
+    filename: "Attending a YC event in London with Friends in Flats",
     src: "/resources/images/fif-in-london.jpeg",
   },
   {
-    alt: "The Mimo team at a retreat in The Alps",
-    filename: "Company hackathon with Mimo in The Alps",
+    alt: "The Mimo team at a retreat in the Alps",
+    filename: "Company hackathon with Mimo in the Alps",
     src: "/resources/images/mimo-retreat.jpg",
   },
   {
-    alt: "",
-    filename: "Celebrating with The Mimo Team",
+    alt: "The Mimo team celebrating together",
+    filename: "Celebrating with friends on the Mimo team",
     src: "/resources/images/mimo-friends.JPG",
   },
   {
     alt: "Lukas wearing a helmet while looking at a computer screen and in deep thought",
-    filename: "Trying to not take everyting too seriously",
+    filename: "Trying not to take everything too seriously",
     src: "/resources/images/lukas-coding-with-helmet.jpg",
   },
   {
     alt: "Friends in Flats team members on a cycling retreat",
-    filename: "Fif team retreat in Salzkammergut",
+    filename: "Friends in Flats team retreat in Salzkammergut",
     src: "/resources/images/fif-retreat.jpeg",
   },
   {
     alt: "The Mimo team having dinner",
     filename:
-      "A classic Samat selfie (known for taking the best selfies) of The Mimo Team",
+      "A classic Samat selfie (known for taking the best selfies) of the Mimo team",
     src: "/resources/images/mimo-dinner.jpg",
   },
 ];
@@ -97,7 +97,7 @@ const acknowledgementGroups = [
 
 <BaseLayout
   title="Lukas Carvajal - CTO and Product engineer"
-  description="Lukas Carvajal co-founded Tip Yourself (aquired), ran a crucial part of the learning experience at Mimo, and now works on Friends in Flats, generating €80K+ in monthly bookings."
+  description="Lukas Carvajal co-founded Tip Yourself (acquired), ran a crucial part of the learning experience at Mimo, and now works on Friends in Flats, generating €84K in monthly bookings."
 >
   <section class="opening full-bleed">
     <figure class="hero" data-testid="opening-hero">

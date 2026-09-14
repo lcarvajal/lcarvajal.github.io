@@ -6,11 +6,11 @@ description: A short biography of Lukas Carvajal.
 
 Lukas has been developing software for over eight years as Chief Technology Officer and Product Manager at three startups.
 
-He currently builds The Friends in Flats website, which generates €84,000 in monthly bookings.
+He currently builds the Friends in Flats website, which generates €84,000 in monthly bookings.
 
-His biggest accomplishments are
+His biggest accomplishments are:
 
 - Leading 16 people to improve the learning experience at Mimo, used by over 25 million people.
-- Developing the Tip Yourself app, a Top 20 Finance App on The Apple App Store and acquired by Earnin.
+- Developing the Tip Yourself app, a top-20 finance app on the Apple App Store that was acquired by Earnin.
 
 Prior to building software, he was a youth professional soccer player for Cagliari Calcio’s satellite program in Miami.

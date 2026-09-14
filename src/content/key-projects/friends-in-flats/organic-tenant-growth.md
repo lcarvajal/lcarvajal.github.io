@@ -15,7 +15,7 @@ order: 1
 - Average monthly bookings increased from €5,000 to €84,000 per month
 - Monthly spending decreased by €8,000
 
-As a marketplace, the increase in revenue was a team effort with Mathias (CEO) who brought in all the listings and helped with support while switching over from manual responses to AI.
+As a marketplace, the increase in revenue was a team effort with Mathias (CEO), who brought in all the listings and helped with support while switching over from manual responses to AI.
 
 ## Setting up tracking with PostHog
 
@@ -34,7 +34,7 @@ Over time, free university referrals generated 93% of all our bookings, enabling
 
 ## Upsetting the team by killing the flatmate-matching service
 
-Friends in Flats had 8 people heavily invested in building up their flatmate-matching feature but it was clear flatmate matching wasn't really something students cared about.
+Friends in Flats had eight people heavily invested in building up their flatmate-matching feature, but it was clear flatmate matching wasn't really something students cared about.
 
 But what could I do? I was new and nobody thought my research was valid.
 
