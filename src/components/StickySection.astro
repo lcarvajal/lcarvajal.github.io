@@ -32,8 +32,7 @@ const { id, title, description } = Astro.props;
 
   header {
     position: sticky;
-    top: calc(var(--height-header-current) + var(--space-4));
-    transition: top var(--duration-normal) var(--ease-standard);
+    top: calc(var(--height-header-compact) + var(--space-4));
   }
 
   h2 {
@@ -73,7 +72,6 @@ const { id, title, description } = Astro.props;
 
     header {
       position: static;
-      transition: none;
     }
   }
 </style>
