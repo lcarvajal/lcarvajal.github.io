@@ -45,7 +45,9 @@ const { logos } = Astro.props;
       if (!(group instanceof HTMLElement)) return;
 
       const setDuration = () => {
-        const duration = group.getBoundingClientRect().width / pixelsPerSecond;
+        const distance = group.getBoundingClientRect().width;
+        const duration = distance / pixelsPerSecond;
+        track.style.setProperty("--marquee-distance", `-${distance}px`);
         track.style.setProperty("--marquee-duration", `${duration}s`);
       };
 
@@ -66,6 +68,9 @@ const { logos } = Astro.props;
   .logo-marquee__track {
     display: flex;
     width: max-content;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
     animation: marquee var(--marquee-duration, 10s) linear infinite;
   }
 
@@ -106,8 +111,12 @@ const { logos } = Astro.props;
   }
 
   @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
     to {
-      transform: translateX(-50%);
+      transform: translate3d(var(--marquee-distance, -50%), 0, 0);
     }
   }
 
