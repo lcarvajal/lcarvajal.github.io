@@ -15,7 +15,7 @@ const keyProjects = await getCollection("keyProjects");
 const startupBadges = {
   "Friends in Flats": "€84K monthly bookings",
   Mimo: "€800K MRR",
-  "Tip Yourself": "aquired",
+  "Tip Yourself": "aquired by Earnin",
 };
 const startupLogos = startups.map(({ id, data }) => ({
   badge: startupBadges[data.name as keyof typeof startupBadges],
