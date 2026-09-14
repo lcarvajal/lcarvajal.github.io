@@ -51,7 +51,8 @@ const personalPhotos = [
   },
   {
     alt: "The Mimo team having dinner",
-    filename: "A classic Samat selfie (known for taking the best selfies) of The Mimo Team",
+    filename:
+      "A classic Samat selfie (known for taking the best selfies) of The Mimo Team",
     src: "/resources/images/mimo-dinner.jpg",
   },
 ];
@@ -203,9 +204,8 @@ const acknowledgementGroups = [
   .opening {
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto auto;
-    height: calc(
-      100svh - var(--height-header-compact) - var(--space-16) - var(--space-12)
-    );
+    height: calc(100vh - var(--height-header-compact) - var(--space-16));
+    height: calc(100lvh - var(--height-header-compact) - var(--space-16));
   }
 
   .hero {
@@ -338,6 +338,13 @@ const acknowledgementGroups = [
     .portfolio-logo-background,
     .portfolio-logo-link {
       max-width: min(100%, var(--width-text));
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .opening {
+      height: calc(100vh - var(--height-header-compact) - var(--space-12));
+      height: calc(100lvh - var(--height-header-compact) - var(--space-12));
     }
   }
 </style>
