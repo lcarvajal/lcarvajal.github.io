@@ -57,9 +57,41 @@ const { photos } = Astro.props;
       );
 
       const scroll = (direction: -1 | 1) => {
-        track?.scrollBy({
+        if (!track) return;
+
+        const photos = Array.from(
+          track.querySelectorAll<HTMLElement>("figure"),
+        );
+        if (photos.length === 0) return;
+
+        const trackLeft = track.getBoundingClientRect().left;
+        const leadingInset = Number.parseFloat(
+          window.getComputedStyle(track).paddingLeft,
+        );
+        const leadingEdge = trackLeft + leadingInset;
+        const currentIndex = photos.reduce((closestIndex, photo, index) => {
+          const distance = Math.abs(
+            photo.getBoundingClientRect().left - leadingEdge,
+          );
+          const closestDistance = Math.abs(
+            photos[closestIndex].getBoundingClientRect().left - leadingEdge,
+          );
+
+          return distance < closestDistance ? index : closestIndex;
+        }, 0);
+        const targetIndex = Math.min(
+          Math.max(currentIndex + direction, 0),
+          photos.length - 1,
+        );
+        const targetLeft =
+          photos[targetIndex].getBoundingClientRect().left -
+          trackLeft +
+          track.scrollLeft -
+          leadingInset;
+
+        track.scrollTo({
           behavior: "smooth",
-          left: direction * track.clientWidth * 0.8,
+          left: targetLeft,
         });
       };
 
@@ -111,9 +143,15 @@ const { photos } = Astro.props;
     );
     padding-top: var(--space-12);
     padding-bottom: var(--space-8);
-    padding-left: 0;
+    padding-left: max(
+      var(--page-padding),
+      calc((100% - var(--width-content)) / 2)
+    );
     scroll-behavior: smooth;
-    scroll-padding-left: 0;
+    scroll-padding-left: max(
+      var(--page-padding),
+      calc((100% - var(--width-content)) / 2)
+    );
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }

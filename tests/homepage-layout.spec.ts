@@ -1,7 +1,6 @@
 import { expect, test, type Locator } from "@playwright/test";
 
 const edgeTolerance = 1;
-const shortViewportMaxHeight = 640;
 const viewportTolerance = 4;
 
 async function expectInViewport(element: Locator) {
@@ -73,16 +72,14 @@ test("sizes the hero image for the viewport", async ({ page }) => {
   const viewport = page.viewportSize();
 
   expect(viewport).not.toBeNull();
+  await expect(image).toBeVisible();
 
-  if (viewport!.height <= shortViewportMaxHeight) {
-    await expect(image).toBeHidden();
-  } else {
-    const imageBox = await image.boundingBox();
+  const imageBox = await image.boundingBox();
 
-    expect(imageBox).not.toBeNull();
-    expect(Math.abs(imageBox!.x)).toBeLessThanOrEqual(edgeTolerance);
-    expect(
-      Math.abs(imageBox!.x + imageBox!.width - viewport!.width),
-    ).toBeLessThanOrEqual(edgeTolerance);
-  }
+  expect(imageBox).not.toBeNull();
+  expect(imageBox!.height).toBeGreaterThan(0);
+  expect(Math.abs(imageBox!.x)).toBeLessThanOrEqual(edgeTolerance);
+  expect(
+    Math.abs(imageBox!.x + imageBox!.width - viewport!.width),
+  ).toBeLessThanOrEqual(edgeTolerance);
 });

@@ -26,22 +26,22 @@ const startupLogos = startups.map(({ id, data }) => ({
 const personalPhotos = [
   {
     alt: "Friends in Flats team members in London",
-    filename: "Attending YC event in London",
+    filename: "Attending YC a event in London with Friends in Flats",
     src: "/resources/images/fif-in-london.jpeg",
   },
   {
-    alt: "The Mimo team at a retreat",
-    filename: "Mimo team retreat in The Alps",
+    alt: "The Mimo team at a retreat in The Alps",
+    filename: "Company hackathon with Mimo in The Alps",
     src: "/resources/images/mimo-retreat.jpg",
   },
   {
-    alt: "Mimo gang celebrating",
-    filename: "mimo-friends.JPG",
+    alt: "",
+    filename: "Celebrating with The Mimo Team",
     src: "/resources/images/mimo-friends.JPG",
   },
   {
-    alt: "Trying to not take everyting too seriously",
-    filename: "lukas-coding-with-helmet.jpg",
+    alt: "Lukas wearing a helmet while looking at a computer screen and in deep thought",
+    filename: "Trying to not take everyting too seriously",
     src: "/resources/images/lukas-coding-with-helmet.jpg",
   },
   {
@@ -51,7 +51,7 @@ const personalPhotos = [
   },
   {
     alt: "The Mimo team having dinner",
-    filename: "A classic Samat selfie",
+    filename: "A classic Samat selfie (known for taking the best selfies) of The Mimo Team",
     src: "/resources/images/mimo-dinner.jpg",
   },
 ];
@@ -338,16 +338,6 @@ const acknowledgementGroups = [
     .portfolio-logo-background,
     .portfolio-logo-link {
       max-width: min(100%, var(--width-text));
-    }
-  }
-
-  @media (max-height: 40rem) {
-    .opening {
-      grid-template-rows: 1fr auto;
-    }
-
-    .hero {
-      display: none;
     }
   }
 </style>
