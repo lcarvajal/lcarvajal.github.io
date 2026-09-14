@@ -37,10 +37,26 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
 });
 
-test("shows the title initially", async ({ page }) => {
+test("shows the title and startup logos initially", async ({ page }) => {
   const title = page.getByTestId("opening-title");
+  const startupLogos = page.getByTestId("opening-marquee");
 
   await expectInViewport(title);
+  await expectInViewport(startupLogos);
+});
+
+test("shows the first photo peeking from the bottom initially", async ({
+  page,
+}) => {
+  const firstPhoto = page.getByTestId("photo-carousel-image").first();
+  const photoBox = await firstPhoto.boundingBox();
+  const viewport = page.viewportSize();
+
+  expect(photoBox).not.toBeNull();
+  expect(viewport).not.toBeNull();
+  expect(photoBox!.y).toBeGreaterThanOrEqual(0);
+  expect(photoBox!.y).toBeLessThan(viewport!.height);
+  expect(photoBox!.y + photoBox!.height).toBeGreaterThan(viewport!.height);
 });
 
 test("keeps the opening elements from overlapping", async ({ page }) => {

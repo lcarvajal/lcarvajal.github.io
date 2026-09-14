@@ -16,11 +16,17 @@ const { photos } = Astro.props;
   class="photo-carousel full-bleed"
   aria-label="Personal photos"
   data-photo-carousel
+  data-testid="photo-carousel"
 >
   <div class="photo-carousel__track" data-carousel-track tabindex="0">
     {photos.map((photo) => (
       <figure>
-        <img src={photo.src} alt={photo.alt} loading="lazy" />
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          loading="lazy"
+          data-testid="photo-carousel-image"
+        />
         <figcaption>{photo.filename}</figcaption>
       </figure>
     ))}
