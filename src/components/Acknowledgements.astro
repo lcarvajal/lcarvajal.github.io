@@ -5,9 +5,10 @@ interface Props {
   title: string;
   groups: AcknowledgementGroup[];
   note: string;
+  linkPages?: boolean;
 }
 
-const { title, groups, note } = Astro.props;
+const { title, groups, note, linkPages = true } = Astro.props;
 ---
 
 <section class="acknowledgements full-bleed" id="acknowledgements">
@@ -23,8 +24,12 @@ const { title, groups, note } = Astro.props;
               <li>
                 {typeof person === "string" ? (
                   person
+                ) : !linkPages ? (
+                  person.name
                 ) : (
-                  <a href={`/people/${person.slug}/`}>{person.name}</a>
+                  <a href={`/acknowledgements/${person.slug}/`}>
+                    {person.name}
+                  </a>
                 )}
               </li>
             ))}

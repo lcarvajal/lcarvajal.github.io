@@ -45,8 +45,13 @@ const recommendations = defineCollection({
   }),
 });
 
-const people = defineCollection({
-  loader: glob({ base: "./src/content/people", pattern: "**/*.md" }),
+const acknowledgements = defineCollection({
+  loader: glob({ base: "./src/content/acknowledgements", pattern: "**/*.md" }),
 });
 
-export const collections = { keyProjects, people, recommendations, startups };
+export const collections = {
+  acknowledgements,
+  keyProjects,
+  recommendations,
+  startups,
+};

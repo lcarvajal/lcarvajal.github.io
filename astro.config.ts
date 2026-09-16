@@ -8,7 +8,10 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes("/components-preview/"),
+      filter: (page) =>
+        !page.includes("/components-preview/") &&
+        !page.includes("/acknowledgements/") &&
+        !page.includes("/people/"),
     }),
   ],
 });

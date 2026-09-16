@@ -12,38 +12,44 @@ import {
 
 export async function getStaticPaths() {
   const contentBySlug = new Map(
-    (await getCollection("people")).map((content) => [content.id, content]),
+    (await getCollection("acknowledgements")).map((content) => [
+      content.id,
+      content,
+    ]),
   );
 
-  return acknowledgementPages.map((person) => {
-    const content = contentBySlug.get(person.slug);
+  return acknowledgementPages.map((acknowledgement) => {
+    const content = contentBySlug.get(acknowledgement.slug);
 
     if (!content) {
-      throw new Error(`Missing acknowledgement content for '${person.slug}'.`);
+      throw new Error(
+        `Missing acknowledgement content for '${acknowledgement.slug}'.`,
+      );
     }
 
     return {
-      params: { person: person.slug },
-      props: { person, content },
+      params: { acknowledgement: acknowledgement.slug },
+      props: { acknowledgement, content },
     };
   });
 }
 
-const { person, content } = Astro.props;
+const { acknowledgement, content } = Astro.props;
 const { Content } = await render(content);
 ---
 
 <SubpageLayout
-  title={`Thanks ${person.name} · Lukas Carvajal`}
-  description={`An acknowledgement to ${person.name} from Lukas`}
-  heading={person.name}
+  title={`Thanks ${acknowledgement.name} · Lukas Carvajal`}
+  description={`An acknowledgement to ${acknowledgement.name} from Lukas`}
+  heading={acknowledgement.name}
   breadcrumbs={[{ label: "Acknowledgements", href: "/#acknowledgements" }]}
   largeBody
+  noindex
 >
   <Content />
 
   <Fragment slot="after">
-    <PhotoCarousel photos={person.photos} />
+    <PhotoCarousel photos={acknowledgement.photos} />
     <Acknowledgements
       title={acknowledgementTitle}
       groups={acknowledgementGroups}

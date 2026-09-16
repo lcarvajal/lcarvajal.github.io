@@ -67,10 +67,90 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
           },
         ],
       },
-      "Eric Strohmaier",
-      "Lori Porumb",
-      "Radu Meister",
-      "Joseph O’Brien",
+      {
+        name: "Eric Strohmaier",
+        slug: "eric-strohmaier",
+        photos: [
+          {
+            src: "/resources/images/people/eric-fathy-wein-wandern.webp",
+            alt: "Eric and Fathy outdoors together",
+            caption: "Out walking with Eric and Fathy",
+          },
+          {
+            src: "/resources/images/people/fif-wein-wandern.webp",
+            alt: "Friends in Flats team on a walk",
+            caption: "A Friends in Flats team walk",
+          },
+        ],
+      },
+      {
+        name: "Lori Porumb",
+        slug: "lori-porumb",
+        photos: [
+          {
+            src: "/resources/images/people/content-team-brunch.webp",
+            alt: "The content team together at brunch",
+            caption: "Content team brunch",
+          },
+          {
+            src: "/resources/images/people/lori-radu-brunch.webp",
+            alt: "Lori and Radu together at brunch",
+            caption: "Brunch with Lori and Radu",
+          },
+        ],
+      },
+      {
+        name: "Radu Meister",
+        slug: "radu-meister",
+        photos: [
+          {
+            src: "/resources/images/people/content-team-brunch.webp",
+            alt: "The content team together at brunch",
+            caption: "Content team brunch",
+          },
+          {
+            src: "/resources/images/people/fif-hike.webp",
+            alt: "Friends in Flats team hiking together",
+            caption: "A Friends in Flats team hike",
+          },
+          {
+            src: "/resources/images/people/mimo-brewery.webp",
+            alt: "Mimo team together at a brewery",
+            caption: "A visit to the brewery with Mimo",
+          },
+          {
+            src: "/resources/images/people/lori-radu-brunch.webp",
+            alt: "Lori and Radu together at brunch",
+            caption: "Brunch with Lori and Radu",
+          },
+        ],
+      },
+      {
+        name: "Joseph O’Brien",
+        slug: "joseph-obrien",
+        photos: [
+          {
+            src: "/resources/images/people/joseph-lorenz-portugal.webp",
+            alt: "Joseph and Lorenz together in Portugal",
+            caption: "Joseph and Lorenz in Portugal",
+          },
+          {
+            src: "/resources/images/people/joseph-bday.webp",
+            alt: "Celebrating Joseph's birthday",
+            caption: "Joseph's birthday",
+          },
+          {
+            src: "/resources/images/people/samat-joseph-triathlon.webp",
+            alt: "Samat and Joseph at a triathlon",
+            caption: "Samat and Joseph at a triathlon",
+          },
+          {
+            src: "/resources/images/people/content-team-brunch.webp",
+            alt: "The content team together at brunch",
+            caption: "Content team brunch",
+          },
+        ],
+      },
       "Filip Ruisl",
       "Helene Karlinger",
       "Christopher Simerle",

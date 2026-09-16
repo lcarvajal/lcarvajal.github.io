@@ -14,6 +14,7 @@ interface Props {
   currentLabel?: string;
   image?: string;
   imageAlt?: string;
+  noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   largeBody?: boolean;
 }
@@ -26,12 +27,13 @@ const {
   currentLabel = heading,
   image,
   imageAlt,
+  noindex,
   structuredData,
   largeBody = false,
 } = Astro.props;
 ---
 
-<BaseLayout {title} {description} {image} {imageAlt} {structuredData}>
+<BaseLayout {title} {description} {image} {imageAlt} {noindex} {structuredData}>
   <article class="subpage">
     <nav aria-label="Breadcrumb">
       {breadcrumbs.map(({ label, href }) => (
