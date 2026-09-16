@@ -1,17 +1,13 @@
 ---
-interface Group {
-  title: string;
-  names: string[];
-}
+import type { AcknowledgementGroup } from "../data/acknowledgements";
 
 interface Props {
   title: string;
-  groups: Group[];
+  groups: AcknowledgementGroup[];
   note: string;
-  links?: Record<string, string>;
 }
 
-const { title, groups, note, links = {} } = Astro.props;
+const { title, groups, note } = Astro.props;
 ---
 
 <section class="acknowledgements full-bleed" id="acknowledgements">
@@ -23,8 +19,14 @@ const { title, groups, note, links = {} } = Astro.props;
         <section>
           <h3>{group.title}</h3>
           <ul>
-            {group.names.map((name) => (
-              <li>{links[name] ? <a href={links[name]}>{name}</a> : name}</li>
+            {group.names.map((person) => (
+              <li>
+                {typeof person === "string" ? (
+                  person
+                ) : (
+                  <a href={`/people/${person.slug}/`}>{person.name}</a>
+                )}
+              </li>
             ))}
           </ul>
         </section>

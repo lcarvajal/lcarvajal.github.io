@@ -1,6 +1,6 @@
 ---
 name: Tip Yourself
-logo: /resources/images/tip-yourself-logo-white.png
+logo: /resources/images/projects/tip-yourself-logo-white.png
 title: Helping young Americans save over $1,000,000
 summary: Imagine if saving money felt like winning. Tip Yourself changed people’s money mindset. As CTO, I launched the iOS app.
 order: 3

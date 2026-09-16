@@ -6,18 +6,17 @@ import LogoMarquee from "../components/LogoMarquee.astro";
 import PhotoCarousel from "../components/PhotoCarousel.astro";
 import Project from "../components/Project.astro";
 import StickySection from "../components/StickySection.astro";
+import {
+  acknowledgementGroups,
+  acknowledgementNote,
+  acknowledgementTitle,
+} from "../data/acknowledgements";
 import { getCollection } from "astro:content";
 
 const startups = (await getCollection("startups")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 const keyProjects = await getCollection("keyProjects");
-const acknowledgementLinks = Object.fromEntries(
-  (await getCollection("people")).map(({ id, data }) => [
-    data.name,
-    `/people/${id}/`,
-  ]),
-);
 const startupBadges = {
   "Friends in Flats": "€84K monthly bookings",
   Mimo: "€800K MRR",
@@ -33,80 +32,43 @@ const personalPhotos = [
   {
     alt: "Friends in Flats team members in London",
     caption: "Attending a YC event in London with Friends in Flats",
-    src: "/resources/images/fif-in-london.jpeg",
+    src: "/resources/images/projects/fif-in-london.jpeg",
   },
   {
     alt: "The Mimo team at a retreat in the Alps",
     caption: "Company hackathon with Mimo in the Alps",
-    src: "/resources/images/mimo-retreat.jpg",
+    src: "/resources/images/projects/mimo-retreat.jpg",
   },
   {
     alt: "The Mimo team celebrating together",
     caption: "Celebrating with friends on the Mimo team",
-    src: "/resources/images/mimo-friends.JPG",
+    src: "/resources/images/projects/mimo-friends.JPG",
   },
   {
     alt: "A whiteboard with a map of all screens in the tip yourself app",
     caption: "Mapping out the Tip Yourself app",
-    src: "/resources/images/tip-yourself-whiteboard.JPG",
+    src: "/resources/images/projects/tip-yourself-whiteboard.JPG",
   },
   {
     alt: "Friends in Flats team members on a cycling retreat",
     caption: "Friends in Flats team retreat in Salzkammergut",
-    src: "/resources/images/fif-retreat.jpeg",
+    src: "/resources/images/projects/fif-retreat.jpeg",
   },
   {
     alt: "Lukas wearing a helmet while looking at a computer screen and in deep thought",
     caption: "Trying not to take everything too seriously",
-    src: "/resources/images/lukas-coding-with-helmet.jpg",
+    src: "/resources/images/people/lukas/lukas-coding-with-helmet.jpg",
   },
   {
     alt: "The Mimo team having dinner",
     caption:
       "A classic Samat selfie (known for taking the best selfies) of the Mimo team",
-    src: "/resources/images/mimo-dinner.jpg",
+    src: "/resources/images/projects/mimo-dinner.jpg",
   },
   {
     alt: "The Tip Yourself crew",
     caption: "A blury photo of the Tip Yourself team",
-    src: "/resources/images/tipyourself-2.jpg",
-  },
-];
-
-const acknowledgementGroups = [
-  {
-    title: "Shaped me",
-    names: [
-      "Milton & Karoline Carvajal",
-      "Dr Anthony Krupp",
-      "Luis Carlos Perea",
-    ],
-  },
-  {
-    title: "Bet on me",
-    names: [
-      "Dr Gokila Dorai",
-      "Dave Carvajal",
-      "The Tip Yourself Founders",
-      "The Mimo Founders",
-      "The Friends in Flats Founders",
-      "Andrew Strait",
-    ],
-  },
-  {
-    title: "Built things with me",
-    names: [
-      "Samat Kadyrov",
-      "Eric Strohmaier",
-      "Lori Porumb",
-      "Radu Meister",
-      "Joseph O’Brien",
-      "Filip Ruisl",
-      "Helene Karlinger",
-      "Christopher Simerle",
-      "Filip Greš",
-      "Thomas Sattlecker",
-    ],
+    src: "/resources/images/projects/tipyourself-2.jpg",
   },
 ];
 ---
@@ -119,7 +81,7 @@ const acknowledgementGroups = [
     <figure class="hero" data-testid="opening-hero">
       <img
         data-testid="opening-image"
-        src="/resources/images/lukas-working-with-mimo-team.jpg"
+        src="/resources/images/projects/lukas-working-with-mimo-team.jpg"
         alt="Lukas working with the Mimo team"
         width="1600"
         height="1200"
@@ -199,18 +161,15 @@ const acknowledgementGroups = [
     description="Generating €84,000 in monthly bookings, the public listing site is free to explore without creating an account."
     href="https://friends-in-flats.com?utm_source=lukascarvajal"
     linkLabel="Open website"
-    image="/resources/images/friends-in-flats-home-page.webp"
+    image="/resources/images/projects/friends-in-flats-home-page.webp"
     imageAlt="Screen recording of the Friends in Flats apartment listings homepage"
     video="/resources/video/friends-in-flats-demo.mp4"
   />
 
   <Acknowledgements
-    title="A special thanks to the people that"
+    title={acknowledgementTitle}
     groups={acknowledgementGroups}
-    links={acknowledgementLinks}
-    note={
-      "You make life a lot of fun and taught me loads over the years.\nEverything on this site happened because of you."
-    }
+    note={acknowledgementNote}
   />
 </BaseLayout>
 

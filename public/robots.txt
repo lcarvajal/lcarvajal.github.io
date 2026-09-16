@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /resources/images/
+Allow: /resources/images/projects/
+Allow: /resources/images/people/lukas/
 
 Sitemap: https://lukascarvajal.com/sitemap-index.xml

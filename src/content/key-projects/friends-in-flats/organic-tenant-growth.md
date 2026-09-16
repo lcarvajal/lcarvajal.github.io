@@ -8,7 +8,7 @@ order: 1
 ## The effect
 
 <figure class="project-media">
-  <img src="/resources/images/friends-in-flats-revenue-graph.png" alt="Friends in Flats growth graph rising sharply after Lukas joined in Q3 2024" width="2244" height="1132" loading="lazy" />
+  <img src="/resources/images/projects/friends-in-flats-revenue-graph.png" alt="Friends in Flats growth graph rising sharply after Lukas joined in Q3 2024" width="2244" height="1132" loading="lazy" />
   <figcaption>Friends in Flats revenue growth after I joined in Q3 2024.</figcaption>
 </figure>
 

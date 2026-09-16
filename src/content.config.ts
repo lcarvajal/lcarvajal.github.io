@@ -47,19 +47,6 @@ const recommendations = defineCollection({
 
 const people = defineCollection({
   loader: glob({ base: "./src/content/people", pattern: "**/*.md" }),
-  schema: z.object({
-    name: z.string(),
-    description: z.string(),
-    photos: z
-      .array(
-        z.object({
-          src: z.string(),
-          alt: z.string(),
-          caption: z.string(),
-        }),
-      )
-      .min(1),
-  }),
 });
 
 export const collections = { keyProjects, people, recommendations, startups };

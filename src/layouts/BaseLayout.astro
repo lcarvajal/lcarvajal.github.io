@@ -16,7 +16,7 @@ interface Props {
 const {
   title,
   description = "The personal website of Lukas Carvajal.",
-  image = "/resources/images/og-lukas-carvajal.jpg",
+  image = "/resources/images/people/lukas/og-lukas-carvajal.jpg",
   imageAlt = "Lukas Carvajal working with a product team",
   noindex = Astro.url.pathname.startsWith("/components-preview"),
   structuredData,
@@ -45,10 +45,14 @@ const globalStructuredData = [
   },
 ];
 const pageStructuredData = structuredData
-  ? Array.isArray(structuredData) ? structuredData : [structuredData]
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
   : [];
-const jsonLd = JSON.stringify([...globalStructuredData, ...pageStructuredData])
-  .replace(/</g, "\\u003c");
+const jsonLd = JSON.stringify([
+  ...globalStructuredData,
+  ...pageStructuredData,
+]).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -77,8 +81,13 @@ const jsonLd = JSON.stringify([...globalStructuredData, ...pageStructuredData])
   </head>
   <body>
     <SiteHeader client:load />
-    <main><slot /></main>
+    <main>
+      <slot />
+    </main>
     <SiteFooter />
-    <CookiePreferences analyticsEnabled={import.meta.env.PROD && !noindex} client:load />
+    <CookiePreferences
+      analyticsEnabled={import.meta.env.PROD && !noindex}
+      client:load
+    />
   </body>
 </html>

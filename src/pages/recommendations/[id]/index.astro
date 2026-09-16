@@ -3,23 +3,40 @@ import { getCollection, render } from "astro:content";
 import SubpageLayout from "../../../components/SubpageLayout.astro";
 
 export async function getStaticPaths() {
-  const recommendations = await getCollection("recommendations");
+  const [recommendations, startups] = await Promise.all([
+    getCollection("recommendations"),
+    getCollection("startups"),
+  ]);
 
-  return recommendations.map((recommendation) => ({
-    params: { id: recommendation.id },
-    props: { recommendation },
-  }));
+  return recommendations.map((recommendation) => {
+    const recommendationPath = `/recommendations/${recommendation.id}`;
+    const startup = startups.find(
+      ({ data }) =>
+        data.recommendation?.href.replace(/\/$/, "") === recommendationPath,
+    );
+
+    return {
+      params: { id: recommendation.id },
+      props: { recommendation, startup },
+    };
+  });
 }
 
-const { recommendation } = Astro.props;
+const { recommendation, startup } = Astro.props;
 const { Content } = await render(recommendation);
+const breadcrumbs = startup
+  ? [
+      { label: "Startup portfolio", href: "/" },
+      { label: startup.data.name, href: `/startups/${startup.id}/` },
+    ]
+  : [{ label: "Home", href: "/" }];
 ---
 
 <SubpageLayout
   title={`${recommendation.data.author} · Recommendation · Lukas Carvajal`}
   description={`A recommendation from ${recommendation.data.author}.`}
   heading={`Recommendation from ${recommendation.data.author}`}
-  breadcrumbs={[{ label: "Home", href: "/" }]}
+  {breadcrumbs}
 >
   <img
     slot="heading-media"

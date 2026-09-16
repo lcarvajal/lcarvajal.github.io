@@ -1,6 +1,6 @@
 ---
 name: Friends in Flats
-logo: /resources/images/friends-in-flats-logo-blue.svg
+logo: /resources/images/projects/friends-in-flats-logo-blue.svg
 title: Tripling landlord income while lowering student housing costs
 summary: As CTO, I developed an online marketplace and rental management tools, enabling landlords to bypass a €4 per m² rent cap and opening up cheaper housing options for students.
 order: 1

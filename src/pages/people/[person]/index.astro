@@ -1,29 +1,53 @@
 ---
 import { getCollection, render } from "astro:content";
+import Acknowledgements from "../../../components/Acknowledgements.astro";
 import PhotoCarousel from "../../../components/PhotoCarousel.astro";
 import SubpageLayout from "../../../components/SubpageLayout.astro";
+import {
+  acknowledgementGroups,
+  acknowledgementNote,
+  acknowledgementPages,
+  acknowledgementTitle,
+} from "../../../data/acknowledgements";
 
 export async function getStaticPaths() {
-  const people = await getCollection("people");
+  const contentBySlug = new Map(
+    (await getCollection("people")).map((content) => [content.id, content]),
+  );
 
-  return people.map((person) => ({
-    params: { person: person.id },
-    props: { person },
-  }));
+  return acknowledgementPages.map((person) => {
+    const content = contentBySlug.get(person.slug);
+
+    if (!content) {
+      throw new Error(`Missing acknowledgement content for '${person.slug}'.`);
+    }
+
+    return {
+      params: { person: person.slug },
+      props: { person, content },
+    };
+  });
 }
 
-const { person } = Astro.props;
-const { Content } = await render(person);
+const { person, content } = Astro.props;
+const { Content } = await render(content);
 ---
 
 <SubpageLayout
-  title={`${person.data.name} · Lukas Carvajal`}
-  description={person.data.description}
-  heading={person.data.name}
+  title={`${person.name} · Lukas Carvajal`}
+  description={person.description}
+  heading={person.name}
   breadcrumbs={[{ label: "Acknowledgements", href: "/#acknowledgements" }]}
   largeBody
 >
   <Content />
 
-  <PhotoCarousel slot="after" photos={person.data.photos} />
+  <Fragment slot="after">
+    <PhotoCarousel photos={person.photos} />
+    <Acknowledgements
+      title={acknowledgementTitle}
+      groups={acknowledgementGroups}
+      note={acknowledgementNote}
+    />
+  </Fragment>
 </SubpageLayout>
