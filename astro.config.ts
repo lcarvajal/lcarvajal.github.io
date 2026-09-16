@@ -10,8 +10,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes("/components-preview/") &&
-        !page.includes("/acknowledgements/") &&
-        !page.includes("/people/"),
+        !page.includes("/acknowledgements/"),
     }),
   ],
 });

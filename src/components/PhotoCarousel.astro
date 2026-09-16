@@ -32,14 +32,16 @@ const { photos } = Astro.props;
     ))}
   </div>
 
-  <div class="photo-carousel__controls">
-    <button type="button" aria-label="Previous photos" data-carousel-previous>
-      <span aria-hidden="true">←</span>
-    </button>
-    <button type="button" aria-label="Next photos" data-carousel-next>
-      <span aria-hidden="true">→</span>
-    </button>
-  </div>
+  {photos.length > 1 && (
+    <div class="photo-carousel__controls">
+      <button type="button" aria-label="Previous photos" data-carousel-previous>
+        <span aria-hidden="true">←</span>
+      </button>
+      <button type="button" aria-label="Next photos" data-carousel-next>
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  )}
 </section>
 
 <script>

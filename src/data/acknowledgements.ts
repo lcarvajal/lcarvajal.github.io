@@ -4,6 +4,12 @@ interface Photo {
   caption: string;
 }
 
+const mimoTeamPhoto: Photo = {
+  src: "/resources/images/people/mimo-team.webp",
+  alt: "The Mimo team together",
+  caption: "The Mimo team",
+};
+
 export interface AcknowledgementPage {
   name: string;
   slug: string;
@@ -65,6 +71,7 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
             alt: "Samat and Lukas playing chess",
             caption: "Playing a game of chess on Mariahilferstrasse",
           },
+          mimoTeamPhoto,
         ],
       },
       {
@@ -97,6 +104,7 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
             alt: "Lori and Radu together at brunch",
             caption: "Brunch with Lori and Radu",
           },
+          mimoTeamPhoto,
         ],
       },
       {
@@ -123,6 +131,7 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
             alt: "Lori and Radu together at brunch",
             caption: "Brunch with Lori and Radu",
           },
+          mimoTeamPhoto,
         ],
       },
       {
@@ -130,14 +139,9 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
         slug: "joseph-obrien",
         photos: [
           {
-            src: "/resources/images/people/joseph-lorenz-portugal.webp",
-            alt: "Joseph and Lorenz together in Portugal",
-            caption: "Joseph and Lorenz in Portugal",
-          },
-          {
-            src: "/resources/images/people/joseph-bday.webp",
-            alt: "Celebrating Joseph's birthday",
-            caption: "Joseph's birthday",
+            src: "/resources/images/people/joseph.webp",
+            alt: "Joseph standing on a mountain summit",
+            caption: "Joseph in the mountains",
           },
           {
             src: "/resources/images/people/samat-joseph-triathlon.webp",
@@ -145,17 +149,111 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
             caption: "Samat and Joseph at a triathlon",
           },
           {
+            src: "/resources/images/people/joseph-lorenz-portugal.webp",
+            alt: "Joseph and Lorenz together in Portugal",
+            caption: "Joseph and Lorenz in Portugal",
+          },
+          {
             src: "/resources/images/people/content-team-brunch.webp",
             alt: "The content team together at brunch",
             caption: "Content team brunch",
           },
+          {
+            src: "/resources/images/people/joseph-bday.webp",
+            alt: "Celebrating Joseph's birthday",
+            caption: "Joseph's birthday",
+          },
+          {
+            src: "/resources/images/people/oktoberfest-with-joseph.webp",
+            alt: "Joseph and friends together at Oktoberfest",
+            caption: "Oktoberfest with Joseph",
+          },
+          {
+            src: "/resources/images/people/skiing-with-joseph.webp",
+            alt: "Joseph and friends skiing in the mountains",
+            caption: "Skiing with Joseph",
+          },
+          mimoTeamPhoto,
         ],
       },
-      "Filip Ruisl",
-      "Helene Karlinger",
-      "Christopher Simerle",
-      "Filip Greš",
-      "Thomas Sattlecker",
+      {
+        name: "Filip Ruisl",
+        slug: "filip-ruisl",
+        photos: [
+          {
+            src: "/resources/images/people/filip-ruisl.webp",
+            alt: "Filip Ruisl outdoors",
+            caption: "A moment with Filip",
+          },
+          mimoTeamPhoto,
+        ],
+      },
+      {
+        name: "Helene Karlinger",
+        slug: "helene-karlinger",
+        photos: [
+          {
+            src: "/resources/images/people/helene-planning.webp",
+            alt: "Helene planning with colleagues around a table",
+            caption: "Planning together with Helene",
+          },
+          {
+            src: "/resources/images/people/mimo-friends.webp",
+            alt: "The Mimo team celebrating together",
+            caption: "Celebrating with friends on the Mimo team",
+          },
+        ],
+      },
+      {
+        name: "Christopher Simerle",
+        slug: "christopher-simerle",
+        photos: [
+          {
+            src: "/resources/images/people/christopher-hiking.webp",
+            alt: "Christopher hiking in the mountains",
+            caption: "Hiking with Christopher",
+          },
+          {
+            src: "/resources/images/people/mimo-friends.webp",
+            alt: "The Mimo team celebrating together",
+            caption: "Celebrating with friends on the Mimo team",
+          },
+          mimoTeamPhoto,
+        ],
+      },
+      {
+        name: "Filip Greš",
+        slug: "filip-gres",
+        photos: [
+          {
+            src: "/resources/images/people/foosball-filip-gres.webp",
+            alt: "Filip playing foosball",
+            caption: "Playing foosball with Filip",
+          },
+          {
+            src: "/resources/images/people/lukas-working-with-mimo-team.webp",
+            alt: "Lukas working with the Mimo team",
+            caption: "Working with the Mimo team",
+          },
+        ],
+      },
+      {
+        name: "Thomas Sattlecker",
+        slug: "thomas-sattlecker",
+        photos: [
+          {
+            src: "/resources/images/people/thomas-hiking.webp",
+            alt: "Thomas hiking in the mountains",
+            caption: "Hiking with Thomas",
+          },
+          {
+            src: "/resources/images/people/thomas-inspecting-the-office.webp",
+            alt: "Thomas inspecting the office",
+            caption: "Thomas inspecting the office",
+          },
+          mimoTeamPhoto,
+        ],
+      },
     ],
   },
 ];
