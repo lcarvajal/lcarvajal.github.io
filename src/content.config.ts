@@ -10,15 +10,19 @@ const startups = defineCollection({
     title: z.string(),
     summary: z.string(),
     order: z.number(),
-    highlights: z.array(z.object({
-      label: z.string(),
-      value: z.string(),
-      href: z.string().optional(),
-    })),
-    recommendation: z.object({
-      label: z.string(),
-      href: z.string(),
-    }).optional(),
+    highlights: z.array(
+      z.object({
+        label: z.string(),
+        value: z.string(),
+        href: z.string().optional(),
+      }),
+    ),
+    recommendation: z
+      .object({
+        label: z.string(),
+        href: z.string(),
+      })
+      .optional(),
   }),
 });
 
@@ -41,4 +45,21 @@ const recommendations = defineCollection({
   }),
 });
 
-export const collections = { keyProjects, recommendations, startups };
+const people = defineCollection({
+  loader: glob({ base: "./src/content/people", pattern: "**/*.md" }),
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    photos: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          caption: z.string(),
+        }),
+      )
+      .min(1),
+  }),
+});
+
+export const collections = { keyProjects, people, recommendations, startups };

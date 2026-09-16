@@ -1,7 +1,7 @@
 ---
 interface Photo {
   alt: string;
-  filename: string;
+  caption: string;
   src: string;
 }
 
@@ -27,7 +27,7 @@ const { photos } = Astro.props;
           loading="lazy"
           data-testid="photo-carousel-image"
         />
-        <figcaption>{photo.filename}</figcaption>
+        <figcaption>{photo.caption}</figcaption>
       </figure>
     ))}
   </div>

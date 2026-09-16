@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import SubpageLayout from "../../../../components/SubpageLayout.astro";
 
 export async function getStaticPaths() {
   const [keyProjects, startups] = await Promise.all([
@@ -12,7 +12,9 @@ export async function getStaticPaths() {
     const startup = startups.find(({ id }) => id === project.data.startup);
 
     if (!startup) {
-      throw new Error(`Unknown startup '${project.data.startup}' for key project '${project.id}'.`);
+      throw new Error(
+        `Unknown startup '${project.data.startup}' for key project '${project.id}'.`,
+      );
     }
 
     return {
@@ -28,7 +30,10 @@ export async function getStaticPaths() {
 const { project, startup } = Astro.props;
 const { Content } = await render(project);
 const startupUrl = new URL(`/startups/${startup.id}/`, Astro.site);
-const projectUrl = new URL(`${Astro.url.pathname.replace(/\/$/, "")}/`, Astro.site);
+const projectUrl = new URL(
+  `${Astro.url.pathname.replace(/\/$/, "")}/`,
+  Astro.site,
+);
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -55,62 +60,47 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout
+<SubpageLayout
   title={`${project.data.title} · ${startup.data.name} · Lukas Carvajal`}
   description={project.data.summary}
-  image={project.data.startup === "friends-in-flats" ? "/resources/images/friends-in-flats-revenue-graph.png" : undefined}
-  imageAlt={project.data.startup === "friends-in-flats" ? "Friends in Flats revenue growth after Lukas joined" : undefined}
+  heading={project.data.title}
+  breadcrumbs={[
+    { label: "Startup portfolio", href: "/" },
+    { label: startup.data.name, href: `/startups/${startup.id}/` },
+  ]}
+  image={
+    project.data.startup === "friends-in-flats"
+      ? "/resources/images/friends-in-flats-revenue-graph.png"
+      : undefined
+  }
+  imageAlt={
+    project.data.startup === "friends-in-flats"
+      ? "Friends in Flats revenue growth after Lukas joined"
+      : undefined
+  }
   structuredData={breadcrumbSchema}
 >
-  <article class="key-project-detail">
-    <nav aria-label="Breadcrumb">
-      <a href="/">Startup portfolio</a>
-      <span aria-hidden="true">/</span>
-      <a href={`/startups/${startup.id}/`}>{startup.data.name}</a>
-    </nav>
-    <h1>{project.data.title}</h1>
-    <p class="summary">{project.data.summary}</p>
-    <Content />
-  </article>
-</BaseLayout>
+  <p class="summary">{project.data.summary}</p>
+  <Content />
+</SubpageLayout>
 
 <style>
-  .key-project-detail {
-    box-sizing: border-box;
-    max-width: var(--width-text);
-    padding-block: var(--space-12) var(--space-16);
-  }
-
-  nav {
-    display: flex;
-    gap: var(--space-2);
-    margin-bottom: var(--space-12);
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-  }
-
-  h1 {
-    margin-block: 0 var(--space-4);
-    font-size: var(--text-3xl);
-    line-height: var(--leading-heading);
-  }
-
   .summary {
     margin: 0;
     font-size: var(--text-lg);
   }
 
-  .key-project-detail :global(.project-media) {
+  :global(.subpage__content .project-media) {
     margin: var(--space-8) 0 var(--space-12);
   }
 
-  .key-project-detail :global(.project-media img) {
+  :global(.subpage__content .project-media img) {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  .key-project-detail :global(.project-media figcaption) {
+  :global(.subpage__content .project-media figcaption) {
     margin-top: var(--space-2);
     color: var(--color-text-muted);
     font-size: var(--text-sm);

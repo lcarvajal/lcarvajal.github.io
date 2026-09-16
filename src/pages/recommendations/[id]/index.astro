@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SubpageLayout from "../../../components/SubpageLayout.astro";
 
 export async function getStaticPaths() {
   const recommendations = await getCollection("recommendations");
@@ -15,29 +15,31 @@ const { recommendation } = Astro.props;
 const { Content } = await render(recommendation);
 ---
 
-<BaseLayout
+<SubpageLayout
   title={`${recommendation.data.author} · Recommendation · Lukas Carvajal`}
   description={`A recommendation from ${recommendation.data.author}.`}
+  heading={`Recommendation from ${recommendation.data.author}`}
+  breadcrumbs={[{ label: "Home", href: "/" }]}
 >
-  <article class="recommendation">
-    <img
-      src={recommendation.data.image}
-      alt={recommendation.data.author}
-      loading="lazy"
-    />
-    <h1>Recommendation from {recommendation.data.author}</h1>
-    <div class="quote"><Content /></div>
-    <p><strong>{recommendation.data.author}</strong><br />{recommendation.data.role}</p>
-  </article>
-</BaseLayout>
+  <img
+    slot="heading-media"
+    class="portrait"
+    src={recommendation.data.image}
+    alt={recommendation.data.author}
+    loading="lazy"
+  />
+  <div class="quote">
+    <Content />
+  </div>
+  <p>
+    <strong>{recommendation.data.author}</strong>
+    <br />
+    {recommendation.data.role}
+  </p>
+</SubpageLayout>
 
 <style>
-  .recommendation {
-    max-width: var(--width-text);
-    padding-block: var(--space-12);
-  }
-
-  .recommendation img {
+  .portrait {
     display: block;
     width: var(--space-16);
     height: var(--space-16);

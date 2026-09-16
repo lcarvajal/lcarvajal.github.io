@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Breadcrumb {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  breadcrumbs: Breadcrumb[];
+  currentLabel?: string;
+  image?: string;
+  imageAlt?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  largeBody?: boolean;
+}
+
+const {
+  title,
+  description,
+  heading,
+  breadcrumbs,
+  currentLabel = heading,
+  image,
+  imageAlt,
+  structuredData,
+  largeBody = false,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description} {image} {imageAlt} {structuredData}>
+  <article class="subpage">
+    <nav aria-label="Breadcrumb">
+      {breadcrumbs.map(({ label, href }) => (
+        <>
+          <a {href}>{label}</a>
+          <span aria-hidden="true">/</span>
+        </>
+      ))}
+      <span aria-current="page">{currentLabel}</span>
+    </nav>
+
+    <header class="subpage__header">
+      <slot name="heading-media" />
+      <h1>{heading}</h1>
+    </header>
+
+    <div
+      class:list={[
+        "subpage__content",
+        { "subpage__content--large": largeBody },
+      ]}
+    >
+      <slot />
+    </div>
+  </article>
+
+  <slot name="after" />
+</BaseLayout>
+
+<style>
+  .subpage {
+    box-sizing: border-box;
+    max-width: var(--width-text);
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-12);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  nav a {
+    color: inherit;
+  }
+
+  .subpage__header {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--text-3xl);
+    line-height: var(--leading-heading);
+  }
+
+  .subpage__content {
+    margin-top: var(--space-8);
+  }
+
+  .subpage__content--large {
+    font-size: var(--text-lg);
+  }
+
+  .subpage__content :global(.project) {
+    padding-block: 0;
+  }
+</style>

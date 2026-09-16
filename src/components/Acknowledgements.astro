@@ -8,12 +8,13 @@ interface Props {
   title: string;
   groups: Group[];
   note: string;
+  links?: Record<string, string>;
 }
 
-const { title, groups, note } = Astro.props;
+const { title, groups, note, links = {} } = Astro.props;
 ---
 
-<section class="acknowledgements full-bleed">
+<section class="acknowledgements full-bleed" id="acknowledgements">
   <div class="acknowledgements__inner">
     <h2>{title}</h2>
 
@@ -23,7 +24,7 @@ const { title, groups, note } = Astro.props;
           <h3>{group.title}</h3>
           <ul>
             {group.names.map((name) => (
-              <li>{name}</li>
+              <li>{links[name] ? <a href={links[name]}>{name}</a> : name}</li>
             ))}
           </ul>
         </section>
@@ -74,6 +75,16 @@ const { title, groups, note } = Astro.props;
     padding: 0;
     font-size: var(--text-lg);
     list-style: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: var(--space-1);
+  }
+
+  a:hover {
+    color: var(--color-accent);
   }
 
   .acknowledgements__note {

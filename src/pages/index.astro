@@ -12,6 +12,12 @@ const startups = (await getCollection("startups")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 const keyProjects = await getCollection("keyProjects");
+const acknowledgementLinks = Object.fromEntries(
+  (await getCollection("people")).map(({ id, data }) => [
+    data.name,
+    `/people/${id}/`,
+  ]),
+);
 const startupBadges = {
   "Friends in Flats": "€84K monthly bookings",
   Mimo: "€800K MRR",
@@ -26,43 +32,43 @@ const startupLogos = startups.map(({ id, data }) => ({
 const personalPhotos = [
   {
     alt: "Friends in Flats team members in London",
-    filename: "Attending a YC event in London with Friends in Flats",
+    caption: "Attending a YC event in London with Friends in Flats",
     src: "/resources/images/fif-in-london.jpeg",
   },
   {
     alt: "The Mimo team at a retreat in the Alps",
-    filename: "Company hackathon with Mimo in the Alps",
+    caption: "Company hackathon with Mimo in the Alps",
     src: "/resources/images/mimo-retreat.jpg",
   },
   {
     alt: "The Mimo team celebrating together",
-    filename: "Celebrating with friends on the Mimo team",
+    caption: "Celebrating with friends on the Mimo team",
     src: "/resources/images/mimo-friends.JPG",
   },
   {
     alt: "A whiteboard with a map of all screens in the tip yourself app",
-    filename: "Mapping out the Tip Yourself app",
+    caption: "Mapping out the Tip Yourself app",
     src: "/resources/images/tip-yourself-whiteboard.JPG",
   },
   {
     alt: "Friends in Flats team members on a cycling retreat",
-    filename: "Friends in Flats team retreat in Salzkammergut",
+    caption: "Friends in Flats team retreat in Salzkammergut",
     src: "/resources/images/fif-retreat.jpeg",
   },
   {
     alt: "Lukas wearing a helmet while looking at a computer screen and in deep thought",
-    filename: "Trying not to take everything too seriously",
+    caption: "Trying not to take everything too seriously",
     src: "/resources/images/lukas-coding-with-helmet.jpg",
   },
   {
     alt: "The Mimo team having dinner",
-    filename:
+    caption:
       "A classic Samat selfie (known for taking the best selfies) of the Mimo team",
     src: "/resources/images/mimo-dinner.jpg",
   },
   {
     alt: "The Tip Yourself crew",
-    filename: "A blury photo of the Tip Yourself team",
+    caption: "A blury photo of the Tip Yourself team",
     src: "/resources/images/tipyourself-2.jpg",
   },
 ];
@@ -201,6 +207,7 @@ const acknowledgementGroups = [
   <Acknowledgements
     title="A special thanks to the people that"
     groups={acknowledgementGroups}
+    links={acknowledgementLinks}
     note={
       "You make life a lot of fun and taught me loads over the years.\nEverything on this site happened because of you."
     }
