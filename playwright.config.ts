@@ -1,37 +1,45 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: "html",
   use: {
-    baseURL: 'http://127.0.0.1:4321',
-    trace: 'on-first-retry',
+    baseURL: "http://127.0.0.1:4321",
+    trace: "on-first-retry",
   },
   projects: [
     {
-      name: 'desktop-chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "desktop-chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: 'mobile-chromium',
-      use: { ...devices['Pixel 7'] },
+      name: "mobile-chromium",
+      use: { ...devices["Pixel 7"] },
     },
     {
-      name: 'desktop-webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: "desktop-webkit",
+      use: { ...devices["Desktop Safari"] },
     },
     {
-      name: 'mobile-webkit',
-      use: { ...devices['iPhone SE'] },
+      name: "mobile-webkit",
+      use: { ...devices["iPhone SE"] },
+    },
+    {
+      name: "tablet-mini-webkit",
+      use: { ...devices["iPad Mini"] },
+    },
+    {
+      name: "tablet-pro-webkit",
+      use: { ...devices["iPad Pro 11"] },
     },
   ],
   webServer: {
-    command: 'npm run dev -- --host 127.0.0.1',
-    url: 'http://127.0.0.1:4321',
+    command: "npm run dev -- --host 127.0.0.1",
+    url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
   },
 });
