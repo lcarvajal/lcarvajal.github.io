@@ -7,7 +7,6 @@ interface Photo {
 export interface AcknowledgementPage {
   name: string;
   slug: string;
-  description: string;
   photos: Photo[];
 }
 
@@ -44,33 +43,27 @@ export const acknowledgementGroups: AcknowledgementGroup[] = [
       {
         name: "Samat Kadyrov",
         slug: "samat-kadyrov",
-        description:
-          "A thank-you to Samat Kadyrov, who built things with Lukas at Mimo.",
         photos: [
           {
-            src: "/resources/images/people/samat-hiking.JPG",
+            src: "/resources/images/people/samat-hiking.webp",
             alt: "Samat hiking in the mountains",
-            caption: "samat-hiking.JPG",
+            caption: "Samat summiting new heights",
           },
           {
-            src: "/resources/images/people/samat-and-lukas-office.jpg",
-            alt: "Samat and Lukas together in an office",
-            caption: "samat-and-lukas-office.jpg",
-          },
-          {
-            src: "/resources/images/people/samat-and-lukas-waterfall.jpg",
-            alt: "Samat and Lukas beside a waterfall",
-            caption: "samat-and-lukas-waterfall.jpg",
-          },
-          {
-            src: "/resources/images/people/mimo-triathlon.JPG",
+            src: "/resources/images/people/mimo-triathlon.webp",
             alt: "The Mimo team at a triathlon",
-            caption: "mimo-triathlon.JPG",
+            caption: "Competing at the Neusiedlersee triathlon",
           },
           {
-            src: "/resources/images/people/samat-and-lukas-chess.jpeg",
+            src: "/resources/images/people/samat-and-lukas-waterfall.webp",
+            alt: "Samat and Lukas beside a waterfall",
+            caption:
+              "Stopping for a classic Samat selfie with a waterfall in Kyrgyztan",
+          },
+          {
+            src: "/resources/images/people/samat-and-lukas-chess.webp",
             alt: "Samat and Lukas playing chess",
-            caption: "samat-and-lukas-chess.jpeg",
+            caption: "Playing a game of chess on Mariahilferstrasse",
           },
         ],
       },

@@ -1,7 +1,7 @@
 ---
 author: Mike Lenz
 role: Tip Yourself co-founder; now VP of Product at Brigit
-image: /resources/images/people/mike.jpg
+image: /resources/images/people/mike.webp
 ---
 
 Lukas is an incredibly talented engineer.

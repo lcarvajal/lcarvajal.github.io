@@ -1,7 +1,7 @@
 ---
 author: Lorenz Schimik
 role: Co-founder at Mimo
-image: /resources/images/people/lorenz.jpg
+image: /resources/images/people/lorenz.webp
 ---
 
 Working with Lukas over the last 3+ years was amazing.
